@@ -1,165 +1,610 @@
 {
-	"achievements": [
-		{
-			"variant": "yellow",
-			"title": "AWWWARDS SOTD",
-			"description": "Site of the Day recognition for the experimental project \"Hyper-Space\".",
-			"icon": "trophy",
-			"wrapperClass": "transition-transform hover:scale-105"
-		},
-		{
-			"variant": "neutral",
-			"title": "AWS PROFESSIONAL",
-			"description": "Certified Solutions Architect Professional badge for cloud infrastructure architecture.",
-			"icon": "cloud",
-			"wrapperClass": "transition-transform hover:-rotate-1 lg:mt-12"
-		},
-		{
-			"variant": "yellow",
-			"title": "FWA OF THE DAY",
-			"description": "Honored for exceptional creativity and technical execution on the web.",
-			"icon": "star",
-			"wrapperClass": "transition-transform hover:scale-105"
-		},
-		{
-			"variant": "neutral",
-			"title": "BEST UI AWARDS",
-			"description": "CSS Design Awards nomination for best user interface design in 2023.",
-			"icon": "code",
-			"wrapperClass": "transition-transform hover:rotate-1 lg:-mt-6"
-		},
-		{
-			"variant": "yellow",
-			"title": "ETH GLOBAL WINNER",
-			"description": "First place in the DeFi track during the 2022 ETH Global Hackathon.",
-			"icon": "award",
-			"wrapperClass": "transition-transform hover:scale-110"
-		},
-		{
-			"variant": "neutral",
-			"title": "AZURE SOLUTIONS",
-			"description": "Microsoft Certified: Azure Solutions Architect Expert certification.",
-			"icon": "microchip",
-			"wrapperClass": "transition-transform hover:-rotate-2 lg:mt-6"
-		},
-		{
-			"variant": "yellow",
-			"title": "FORBES 30U30",
-			"description": "Recognized in the Tech & Media category for contributions to the ecosystem.",
-			"icon": "book-open",
-			"wrapperClass": "transition-transform hover:scale-105 lg:-mt-12"
-		},
-		{
-			"variant": "neutral",
-			"title": "REACT CONF SPEAKER",
-			"description": "Keynote speaker on the future of brutalist design in web applications.",
-			"icon": "megaphone",
-			"wrapperClass": "transition-transform hover:rotate-2"
-		},
-		{
-			"variant": "yellow",
-			"title": "10K STARS PROJECT",
-			"description": "Lead maintainer of the open-source library used by over 500 companies.",
-			"icon": "git-branch",
-			"wrapperClass": "transition-transform hover:scale-105 lg:mt-12"
-		},
-		{
-			"variant": "neutral",
-			"title": "DRIBBBLE TOP SHOT",
-			"description": "Voted #1 design concept of the month with over 50k interactions.",
-			"icon": "image",
-			"wrapperClass": "transition-transform hover:-rotate-1 lg:-mt-6"
-		},
-		{
-			"variant": "yellow",
-			"title": "SMASHING MAG FEAT",
-			"description": "Authored a feature article on accessible brutalism for modern web.",
-			"icon": "file-text",
-			"wrapperClass": "transition-transform hover:scale-110"
-		},
-		{
-			"variant": "neutral",
-			"title": "GOOGLE CLOUD CD",
-			"description": "Professional Cloud Developer certification for enterprise systems.",
-			"icon": "shield-check",
-			"wrapperClass": "transition-transform hover:rotate-1 lg:mt-6"
-		}
-	],
-	"showcaseDesignAwards": [
-		{
-			"variant": "yellow",
-			"title": "SOTM // AWWWARDS",
-			"description": "Site of the Month recognition for Project Stellar - a revolutionary fintech dashboard.",
-			"icon": "trophy"
-		},
-		{
-			"variant": "neutral",
-			"title": "FWA OF THE DAY",
-			"description": "Honoring visual excellence and creative coding for the \"Lost in Chaos\" portfolio experience.",
-			"icon": "award"
-		},
-		{
-			"variant": "purple",
-			"title": "CSS WINNER SOTD",
-			"description": "Voted best UI design for the \"Brutal Architecture\" archive platform in 2023.",
-			"icon": "star"
-		},
-		{
-			"variant": "yellow",
-			"title": "BEHANCE CURATED",
-			"description": "Featured in the Interaction design gallery for the \"Neon Punk\" mobile app case study.",
-			"icon": "crown"
-		}
-	],
-	"showcaseTechEngineering": [
-		{
-			"variant": "neutral",
-			"title": "HACKATON WINNER",
-			"description": "1st Place at Jakarta Web3 Hackathon for building an autonomous DeFi tracker.",
-			"icon": "terminal"
-		},
-		{
-			"variant": "yellow",
-			"title": "AWS PROFESSIONAL",
-			"description": "Validated expertise in architecting complex distributed systems on AWS clouds.",
-			"icon": "shield-check"
-		},
-		{
-			"variant": "neutral",
-			"title": "META CERTIFIED",
-			"description": "Senior React Specialist certification verifying mastery of component patterns.",
-			"icon": "cpu"
-		},
-		{
-			"variant": "yellow",
-			"title": "TOP BUG BOUNTY",
-			"description": "Discovered critical vulnerability in major SaaS platform, earning Hall of Fame status.",
-			"icon": "bug"
-		}
-	],
-	"showcaseLocalHero": {
-		"rank": "#01",
-		"title": "LOCAL HERO",
-		"description": "VOTED MOST INNOVATIVE DEVELOPER IN THE SOUTHEAST ASIAN TECH COMMUNITY 2024."
-	},
-	"showcaseOpenSource": [
-		{
-			"icon": "git-branch",
-			"title": "1K+ STARS",
-			"description": "CREATOR OF 'BRUTAL-UI' LIBRARY, USED BY THOUSANDS OF EXPERIMENTAL DEVELOPERS.",
-			"cellClass": "border-b-8 border-black p-12 transition-all hover:bg-black hover:text-white md:border-r-8 md:border-b-0"
-		},
-		{
-			"icon": "git-pull-request",
-			"title": "CONTRIBUTOR",
-			"description": "ACTIVE CORE CONTRIBUTOR TO TAILWIND CSS AND VITE ECOSYSTEMS.",
-			"cellClass": "border-b-8 border-black p-12 transition-all hover:bg-white hover:text-black lg:border-r-8 lg:border-b-0"
-		},
-		{
-			"icon": "users",
-			"title": "MENTOR",
-			"description": "MENTORED 50+ JUNIOR DEVS THROUGH GOOGLE SUMMER OF CODE 2022-2023.",
-			"cellClass": "p-12 transition-all hover:bg-zinc-800 hover:text-accent md:col-span-2 lg:col-span-1"
-		}
-	]
+  "home": {
+    "hero": {
+      "backgroundWord": "EXPERIMENTAL",
+      "badge": "AVAILABLE FOR HIRE",
+      "title": {
+        "before": "CRAFTING",
+        "highlight": "DI-GI-TAL",
+        "after": "CHAOS."
+      },
+      "taglines": [
+        "FULLSTACK DEVELOPER & VISUAL TERRORIST.",
+        "BREAKING GRIDS SINCE 2018."
+      ],
+      "ctas": [
+        {
+          "href": "/contact",
+          "id": "cta-hero-work",
+          "label": "LET'S WORK",
+          "class": "glitch inline-flex w-full items-center justify-center bg-accent px-6 py-4 text-center text-lg font-display text-black transition-all brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none sm:w-auto sm:px-10 sm:py-6 sm:text-2xl"
+        },
+        {
+          "href": "/contact#cv",
+          "id": "cta-hero-cv",
+          "label": "GET CV",
+          "class": "inline-flex w-full items-center justify-center bg-white px-6 py-4 text-center text-lg font-display text-black transition-all brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none sm:w-auto sm:px-10 sm:py-6 sm:text-2xl dark:bg-black dark:text-white"
+        }
+      ],
+      "profile": {
+        "alt": "RIZKI",
+        "nameBadge": "RIZKI"
+      }
+    },
+    "marquee": {
+      "text": "WEB DEVELOPMENT // UI DESIGN // CREATIVE CODING // 3D MODELLING // BRANDING // SYSTEM ARCHITECTURE //"
+    },
+    "experience": {
+      "title": "EXPERIENCE",
+      "items": [
+        {
+          "index": "01",
+          "period": "2022-NOW",
+          "periodBadgeClass": "bg-black px-4 py-1 font-bold text-white",
+          "cardClass": "group border-b-8 border-black p-6 transition-colors hover:bg-accent hover:text-black sm:p-10 lg:border-r-8 lg:border-b-0 lg:p-12 dark:border-white",
+          "role": "SENIOR DEV",
+          "company": "TECHNOVA SOLUTIONS // REMOTE",
+          "description": "LEAD ARCHITECT FOR SCALABLE FRONTEND SYSTEMS. OPTIMIZING RUNTIME PERFORMANCE BY 40% THROUGH RADICAL REFACTORS."
+        },
+        {
+          "index": "02",
+          "period": "2020-2022",
+          "periodBadgeClass": "bg-accent px-4 py-1 font-bold text-black",
+          "cardClass": "group p-6 transition-colors hover:bg-black hover:text-white sm:p-10 lg:p-12 dark:hover:bg-white dark:hover:text-black",
+          "role": "UI DESIGNER",
+          "company": "CREATIVE STUDIO // JKT",
+          "description": "TRANSFORMING COMPLEX USER FLOWS INTO VISUALLY AGGRESSIVE INTERFACES. CREATED 20+ AWARD-WINNING IDENTITIES."
+        }
+      ]
+    },
+    "highlights": [
+      {
+        "icon": "trophy",
+        "cardClass": "w-full rotate-2 bg-black p-6 text-white brutalist-border brutalist-shadow sm:p-10 xl:flex-1 xl:p-12",
+        "iconClass": "mb-6 size-18 stroke-[1.5] text-accent",
+        "title": "SITE OF THE MONTH",
+        "description": "AWWWARDS RECOGNITION FOR PROJECT 'STELLAR'."
+      },
+      {
+        "icon": "shield-check",
+        "cardClass": "w-full -rotate-2 bg-accent p-6 text-black brutalist-border brutalist-shadow sm:p-10 xl:flex-1 xl:p-12",
+        "iconClass": "mb-6 size-18 stroke-[1.5]",
+        "title": "CERTIFIED ARCHITECT",
+        "description": "AWS SOLUTIONS PROFESSIONAL CERTIFICATION."
+      },
+      {
+        "icon": "users",
+        "cardClass": "w-full rotate-1 border-4 border-black bg-white p-6 text-black brutalist-border brutalist-shadow sm:p-10 dark:border-white dark:bg-zinc-100 xl:flex-1 xl:p-12",
+        "iconClass": "mb-6 size-18 stroke-[1.5]",
+        "title": "TOP CONTRIBUTOR",
+        "description": "TOP 5% IN GLOBAL OPEN SOURCE CONTRIBUTIONS."
+      }
+    ],
+    "featurePanels": [
+      {
+        "sectionId": "guestbook",
+        "wrapperClass": "group relative overflow-hidden border-4 border-black bg-accent p-6 brutalist-border brutalist-shadow sm:p-10 lg:p-12 dark:border-white",
+        "title": "GUESTBOOK",
+        "description": "LEAVE YOUR MARK. TELL ME I'M CRAZY.",
+        "href": "/guestbook",
+        "buttonId": "btn-guestbook-link",
+        "buttonLabel": "SIGN NOW",
+        "buttonClass": "inline-block bg-black px-8 py-4 text-2xl font-display text-white transition-all hover:bg-white hover:text-black brutalist-border",
+        "icon": "message-square",
+        "iconClass": "absolute -right-12 -bottom-12 size-[200px] stroke-1 opacity-20 transition-transform group-hover:scale-110"
+      },
+      {
+        "sectionId": "games",
+        "wrapperClass": "group relative overflow-hidden border-4 border-black bg-accent p-6 brutalist-border brutalist-shadow sm:p-10 lg:p-12 dark:border-white",
+        "title": "ARCADE",
+        "description": "WASTE SOME TIME. PLAY MINI GAMES.",
+        "href": "/games",
+        "buttonId": "btn-games-link",
+        "buttonLabel": "PLAY GAME",
+        "buttonClass": "inline-block bg-black px-8 py-4 text-2xl font-display text-white transition-all hover:bg-white hover:text-black brutalist-border",
+        "icon": "gamepad-2",
+        "iconClass": "absolute -right-12 -bottom-12 size-[200px] stroke-1 opacity-20 transition-transform group-hover:scale-110"
+      }
+    ],
+    "contact": {
+      "title": "LET'S TALK",
+      "subtitle": "NO SOFT EMAILS. BE BOLD.",
+      "formId": "contact-form",
+      "submitButtonId": "contact-btn-submit",
+      "submitLabel": "EXECUTE SEND",
+      "name": {
+        "name": "name",
+        "label": "YOUR NAME",
+        "placeholder": "ANONYMOUS"
+      },
+      "email": {
+        "name": "email",
+        "label": "YOUR EMAIL",
+        "placeholder": "HACKER@WEB.COM"
+      },
+      "message": {
+        "name": "message",
+        "label": "THE MISSION",
+        "placeholder": "TELL ME THE PROJECT DETAILS...",
+        "rows": 5
+      }
+    }
+  },
+  "achievements": [
+    {
+      "variant": "yellow",
+      "title": "AWWWARDS SOTD",
+      "description": "Site of the Day recognition for the experimental project \"Hyper-Space\".",
+      "icon": "trophy",
+      "wrapperClass": "transition-transform hover:scale-105"
+    },
+    {
+      "variant": "neutral",
+      "title": "AWS PROFESSIONAL",
+      "description": "Certified Solutions Architect Professional badge for cloud infrastructure architecture.",
+      "icon": "cloud",
+      "wrapperClass": "transition-transform hover:-rotate-1 lg:mt-12"
+    },
+    {
+      "variant": "yellow",
+      "title": "FWA OF THE DAY",
+      "description": "Honored for exceptional creativity and technical execution on the web.",
+      "icon": "star",
+      "wrapperClass": "transition-transform hover:scale-105"
+    },
+    {
+      "variant": "neutral",
+      "title": "BEST UI AWARDS",
+      "description": "CSS Design Awards nomination for best user interface design in 2023.",
+      "icon": "code",
+      "wrapperClass": "transition-transform hover:rotate-1 lg:-mt-6"
+    },
+    {
+      "variant": "yellow",
+      "title": "ETH GLOBAL WINNER",
+      "description": "First place in the DeFi track during the 2022 ETH Global Hackathon.",
+      "icon": "award",
+      "wrapperClass": "transition-transform hover:scale-110"
+    },
+    {
+      "variant": "neutral",
+      "title": "AZURE SOLUTIONS",
+      "description": "Microsoft Certified: Azure Solutions Architect Expert certification.",
+      "icon": "microchip",
+      "wrapperClass": "transition-transform hover:-rotate-2 lg:mt-6"
+    },
+    {
+      "variant": "yellow",
+      "title": "FORBES 30U30",
+      "description": "Recognized in the Tech & Media category for contributions to the ecosystem.",
+      "icon": "book-open",
+      "wrapperClass": "transition-transform hover:scale-105 lg:-mt-12"
+    },
+    {
+      "variant": "neutral",
+      "title": "REACT CONF SPEAKER",
+      "description": "Keynote speaker on the future of brutalist design in web applications.",
+      "icon": "megaphone",
+      "wrapperClass": "transition-transform hover:rotate-2"
+    },
+    {
+      "variant": "yellow",
+      "title": "10K STARS PROJECT",
+      "description": "Lead maintainer of the open-source library used by over 500 companies.",
+      "icon": "git-branch",
+      "wrapperClass": "transition-transform hover:scale-105 lg:mt-12"
+    },
+    {
+      "variant": "neutral",
+      "title": "DRIBBBLE TOP SHOT",
+      "description": "Voted #1 design concept of the month with over 50k interactions.",
+      "icon": "image",
+      "wrapperClass": "transition-transform hover:-rotate-1 lg:-mt-6"
+    },
+    {
+      "variant": "yellow",
+      "title": "SMASHING MAG FEAT",
+      "description": "Authored a feature article on accessible brutalism for modern web.",
+      "icon": "file-text",
+      "wrapperClass": "transition-transform hover:scale-110"
+    },
+    {
+      "variant": "neutral",
+      "title": "GOOGLE CLOUD CD",
+      "description": "Professional Cloud Developer certification for enterprise systems.",
+      "icon": "shield-check",
+      "wrapperClass": "transition-transform hover:rotate-1 lg:mt-6"
+    }
+  ],
+  "showcaseDesignAwards": [
+    {
+      "variant": "yellow",
+      "title": "SOTM // AWWWARDS",
+      "description": "Site of the Month recognition for Project Stellar - a revolutionary fintech dashboard.",
+      "icon": "trophy"
+    },
+    {
+      "variant": "neutral",
+      "title": "FWA OF THE DAY",
+      "description": "Honoring visual excellence and creative coding for the \"Lost in Chaos\" portfolio experience.",
+      "icon": "award"
+    },
+    {
+      "variant": "purple",
+      "title": "CSS WINNER SOTD",
+      "description": "Voted best UI design for the \"Brutal Architecture\" archive platform in 2023.",
+      "icon": "star"
+    },
+    {
+      "variant": "yellow",
+      "title": "BEHANCE CURATED",
+      "description": "Featured in the Interaction design gallery for the \"Neon Punk\" mobile app case study.",
+      "icon": "crown"
+    }
+  ],
+  "showcaseTechEngineering": [
+    {
+      "variant": "neutral",
+      "title": "HACKATON WINNER",
+      "description": "1st Place at Jakarta Web3 Hackathon for building an autonomous DeFi tracker.",
+      "icon": "terminal"
+    },
+    {
+      "variant": "yellow",
+      "title": "AWS PROFESSIONAL",
+      "description": "Validated expertise in architecting complex distributed systems on AWS clouds.",
+      "icon": "shield-check"
+    },
+    {
+      "variant": "neutral",
+      "title": "META CERTIFIED",
+      "description": "Senior React Specialist certification verifying mastery of component patterns.",
+      "icon": "cpu"
+    },
+    {
+      "variant": "yellow",
+      "title": "TOP BUG BOUNTY",
+      "description": "Discovered critical vulnerability in major SaaS platform, earning Hall of Fame status.",
+      "icon": "bug"
+    }
+  ],
+  "showcaseLocalHero": {
+    "rank": "#01",
+    "title": "LOCAL HERO",
+    "description": "VOTED MOST INNOVATIVE DEVELOPER IN THE SOUTHEAST ASIAN TECH COMMUNITY 2024."
+  },
+  "showcaseOpenSource": [
+    {
+      "icon": "git-branch",
+      "title": "1K+ STARS",
+      "description": "CREATOR OF 'BRUTAL-UI' LIBRARY, USED BY THOUSANDS OF EXPERIMENTAL DEVELOPERS.",
+      "cellClass": "border-b-8 border-black p-12 transition-all hover:bg-black hover:text-white md:border-r-8 md:border-b-0"
+    },
+    {
+      "icon": "git-pull-request",
+      "title": "CONTRIBUTOR",
+      "description": "ACTIVE CORE CONTRIBUTOR TO TAILWIND CSS AND VITE ECOSYSTEMS.",
+      "cellClass": "border-b-8 border-black p-12 transition-all hover:bg-white hover:text-black lg:border-r-8 lg:border-b-0"
+    },
+    {
+      "icon": "users",
+      "title": "MENTOR",
+      "description": "MENTORED 50+ JUNIOR DEVS THROUGH GOOGLE SUMMER OF CODE 2022-2023.",
+      "cellClass": "p-12 transition-all hover:bg-zinc-800 hover:text-accent md:col-span-2 lg:col-span-1"
+    }
+  ],
+  "career": [
+    {
+      "period": "2023 - NOW",
+      "title": "SENIOR LEAD",
+      "company": "FUTURESCALE // REMOTE",
+      "description": "REVOLUTIONIZING CLOUD DASHBOARDS WITH HIGH-CONTRAST DATA VISUALIZATION AND ATOMIC DESIGN SYSTEMS.",
+      "quote": true,
+      "skills": ["NEXT.JS", "TURBO REPO", "AWS", "D3.JS"],
+      "rowEnd": false,
+      "rotate": "rotate-1",
+      "tone": "accent",
+      "periodStyle": "onDark",
+      "tagStyle": "pillDark"
+    },
+    {
+      "period": "2021 - 2023",
+      "title": "FULL STACK",
+      "company": "NEOCORE SYSTEMS // BERLIN",
+      "description": "DEVELOPED REAL-TIME TRADING ENGINES AND ROBUST GRAPHQL APIS. SCALED TRAFFIC FROM 10K TO 1M MAU WITHOUT DOWNTIME.",
+      "quote": false,
+      "skills": ["TYPESCRIPT", "RUST", "POSTGRES", "REDIS"],
+      "rowEnd": true,
+      "rotate": "-rotate-2",
+      "tone": "surface",
+      "periodStyle": "onAccent",
+      "tagStyle": "outline"
+    },
+    {
+      "period": "2019 - 2021",
+      "title": "UX ENGINEER",
+      "company": "PIXELPUSH STUDIO // JKT",
+      "description": "WHERE DESIGN MEETS CODE. BUILT HIGH-FIDELITY PROTOTYPES THAT BECAME INDUSTRY STANDARDS IN THE FINTECH SPACE.",
+      "quote": false,
+      "skills": ["VUE 3", "FRAMER MOTION", "FIGMA"],
+      "rowEnd": false,
+      "rotate": "rotate-2",
+      "tone": "inverted",
+      "periodStyle": "onAccent",
+      "tagStyle": "pillAccent"
+    },
+    {
+      "period": "2018 - 2019",
+      "title": "JUNIOR DEV",
+      "company": "STARTUP HUB // JKT",
+      "description": "LEARNED THE ROPES. BUILT 50+ LANDING PAGES AND MASTERED THE ART OF THE CLEAN GIT COMMIT.",
+      "quote": false,
+      "skills": ["JAVASCRIPT", "PHP", "JQUERY"],
+      "rowEnd": true,
+      "rotate": "-rotate-1",
+      "tone": "accent",
+      "periodStyle": "onDark",
+      "tagStyle": "pillDark"
+    },
+    {
+      "period": "2017 - 2018",
+      "title": "FREELANCE",
+      "company": "VARIOUS CLIENTS // GLOBAL",
+      "description": "THE HUSTLE. DESIGNED LOGOS, CODED WEBSITES, AND MANAGED CLIENT EXPECTATIONS ACROSS 5 TIMEZONES.",
+      "quote": false,
+      "skills": ["WP", "SHOPIFY", "UI/UX"],
+      "rowEnd": false,
+      "rotate": "rotate-3",
+      "tone": "surface",
+      "periodStyle": "onAccent",
+      "tagStyle": "outline"
+    }
+  ],
+  "contact": {
+    "header": {
+      "titleLine": "GET IN",
+      "titleHighlight": "CONTACT",
+      "badge": "& VIEW MY CREDENTIALS"
+    },
+    "form": {
+      "sectionTitle": "MISSION LOG",
+      "row1": [
+        {
+          "name": "fullname",
+          "type": "text",
+          "label": "FULL NAME",
+          "placeholder": "JOHN DOE"
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "label": "EMAIL ADDRESS",
+          "placeholder": "JOHN@EXAMPLE.COM"
+        }
+      ],
+      "message": {
+        "name": "message",
+        "label": "MESSAGE",
+        "placeholder": "WHAT'S ON YOUR MIND?",
+        "rows": 5
+      },
+      "submitLabel": "SEND MESSAGE",
+      "submittingLabel": "SENDING...",
+      "successLabel": "MESSAGE SENT //"
+    },
+    "channels": {
+      "title": "DIRECT CHANNELS",
+      "email": "HELLO@RIZKI.CHAOS",
+      "location": "BERLIN // GLOBAL",
+      "social": [
+        {
+          "id": "soc-gh-1",
+          "href": "#",
+          "ariaLabel": "GitHub",
+          "icon": "git-branch"
+        },
+        {
+          "id": "soc-li-1",
+          "href": "#",
+          "ariaLabel": "LinkedIn",
+          "icon": "link-2"
+        },
+        {
+          "id": "soc-tw-1",
+          "href": "#",
+          "ariaLabel": "Twitter",
+          "icon": "hash"
+        }
+      ]
+    },
+    "cv": {
+      "title": "CURRICULUM",
+      "entries": [
+        {
+          "variant": "dark",
+          "period": "2022 - PRESENT",
+          "title": "SENIOR FRONTEND DEV",
+          "company": "TECHNOVA SOLUTIONS // REMOTE"
+        },
+        {
+          "variant": "accent",
+          "period": "2020 - 2022",
+          "title": "UI DESIGNER",
+          "company": "CREATIVE STUDIO // JKT"
+        }
+      ],
+      "skills": [
+        {
+          "icon": "braces",
+          "label": "TYPESCRIPT",
+          "tileClass": "group flex aspect-square flex-col items-center justify-center bg-black p-6 text-center text-white transition-colors brutalist-border brutalist-shadow-sm hover:bg-accent hover:text-black"
+        },
+        {
+          "icon": "component",
+          "label": "REACT.JS",
+          "tileClass": "group flex aspect-square flex-col items-center justify-center bg-white p-6 text-center transition-colors brutalist-border brutalist-shadow-sm hover:bg-black hover:text-white dark:bg-zinc-900 dark:hover:bg-black"
+        },
+        {
+          "icon": "wind",
+          "label": "TAILWIND",
+          "tileClass": "group flex aspect-square flex-col items-center justify-center bg-accent p-6 text-center text-black transition-colors brutalist-border brutalist-shadow-sm hover:bg-black hover:text-white"
+        },
+        {
+          "icon": "server",
+          "label": "NODE.JS",
+          "tileClass": "group flex aspect-square flex-col items-center justify-center bg-zinc-200 p-6 text-center transition-colors brutalist-border brutalist-shadow-sm hover:bg-accent hover:text-black dark:bg-zinc-700"
+        },
+        {
+          "icon": "container",
+          "label": "DOCKER",
+          "tileClass": "group flex aspect-square flex-col items-center justify-center bg-black p-6 text-center text-white transition-colors brutalist-border brutalist-shadow-sm hover:bg-white hover:text-black"
+        },
+        {
+          "icon": "pen-tool",
+          "label": "FIGMA",
+          "tileClass": "group flex aspect-square flex-col items-center justify-center bg-white p-6 text-center transition-colors brutalist-border brutalist-shadow-sm hover:bg-accent hover:text-black dark:bg-zinc-900"
+        }
+      ],
+      "download": {
+        "href": "#",
+        "id": "btn-full-cv-download",
+        "label": "DOWNLOAD FULL CV PDF",
+        "subtext": "READY FOR PRINT // HIGH RESOLUTION // 1.2MB"
+      },
+      "education": {
+        "title": "EDUCATION",
+        "items": [
+          {
+            "year": "2016",
+            "degree": "COMPUTER SCIENCE BS",
+            "school": "UNIVERSITY OF TECHNOLOGY"
+          },
+          {
+            "year": "2021",
+            "degree": "SYSTEM DESIGN MASTERY",
+            "school": "MIT OPEN COURSEWARE"
+          }
+        ]
+      }
+    }
+  },
+  "guestbook": {
+    "header": {
+      "titleLine": "GUEST",
+      "titleHighlight": "BOOK",
+      "version": "v2.4.0"
+    },
+    "intro": {
+      "lines": ["SAY SOMETHING. LEAVE A TRACE.", "VANDALISM IS WELCOME HERE."]
+    },
+    "form": {
+      "title": "SIGN THE BOOK",
+      "name": {
+        "name": "name",
+        "label": "WHO ARE YOU?",
+        "placeholder": "ANONYMOUS_USER"
+      },
+      "email": {
+        "name": "email",
+        "label": "EMAIL (OPTIONAL)",
+        "placeholder": "GHOST@PROTO.COL"
+      },
+      "message": {
+        "name": "message",
+        "label": "YOUR MANIFESTO",
+        "placeholder": "TYPE YOUR MESSAGE HERE...",
+        "rows": 5
+      },
+      "submitLabel": "SUBMIT LOG",
+      "submittingLabel": "LOGGING...",
+      "successLabel": "SUCCESS // LOGGED"
+    },
+    "note": "NOTE: MESSAGES ARE PUBLIC. DON'T BE A COWARD.",
+    "list": {
+      "title": "LOGGED_ENTRY",
+      "entriesBadge": "[ 24 ENTRIES ]",
+      "loadMoreLabel": "LOAD_ANOTHER_PAGE"
+    },
+    "entries": [
+      {
+        "id": "0x0F4",
+        "datetime": "2024-05-12 // 14:20",
+        "author": "CYBER_VANDAL",
+        "message": "LOVE THE BRUTALIST VIBE. IT'S RAW, IT'S UNFILTERED. KEEP BREAKING THE WEB.",
+        "cardClass": "group relative bg-white p-8 brutalist-border brutalist-entry-card dark:bg-zinc-900",
+        "badgeClass": "bg-black px-4 py-1 font-bold text-white dark:bg-accent dark:text-black",
+        "messageClass": "text-xl leading-relaxed",
+        "showFlame": true
+      },
+      {
+        "id": "0x0F3",
+        "datetime": "2024-05-11 // 09:45",
+        "author": "SARAH_D",
+        "message": "FINALLY A PORTFOLIO THAT DOESN'T LOOK LIKE A NOTION PAGE. REFRESHING.",
+        "cardClass": "group relative -rotate-1 bg-black p-8 text-white brutalist-border brutalist-entry-card dark:bg-white dark:text-black",
+        "badgeClass": "bg-accent px-4 py-1 font-bold text-black",
+        "messageClass": "text-xl leading-relaxed",
+        "showFlame": false
+      },
+      {
+        "id": "0x0F2",
+        "datetime": "2024-05-10 // 22:12",
+        "author": "KODER_X",
+        "message": "GLITCH IN THE MATRIX FOUND. I'M STAYING HERE FOREVER.",
+        "cardClass": "group relative rotate-1 bg-accent p-8 text-black brutalist-border brutalist-entry-card",
+        "badgeClass": "bg-black px-4 py-1 font-bold text-white",
+        "messageClass": "text-xl leading-relaxed font-bold italic underline decoration-4",
+        "showFlame": false
+      },
+      {
+        "id": "0x0F1",
+        "datetime": "2024-05-08 // 11:30",
+        "author": "ANON_99",
+        "message": "JUST DROPPING BY TO SAY HI. THE DESIGN IS AGGRESSIVE BUT I LIKE IT.",
+        "cardClass": "group relative bg-white p-8 brutalist-border brutalist-entry-card dark:bg-zinc-900",
+        "badgeClass": "bg-black px-4 py-1 font-bold text-white dark:bg-accent dark:text-black",
+        "messageClass": "text-xl leading-relaxed",
+        "showFlame": false
+      }
+    ]
+  },
+  "header": {
+    "logo": {
+      "text": "RIZ.",
+      "href": "/",
+      "id": "nav-logo-link"
+    },
+    "themeToggleAriaLabel": "Toggle theme",
+    "nav": [
+      { "href": "/", "id": "nav-home-link", "label": "HOM." },
+      { "href": "/career-timeline", "id": "nav-exp-link", "label": "EXP." },
+      { "href": "/achievements", "id": "nav-awd-link", "label": "AWD." },
+      { "href": "/guestbook", "id": "nav-guestbook-link", "label": "GBK." },
+      { "href": "/games", "id": "nav-arc-link", "label": "ARC." },
+      { "href": "/contact", "id": "nav-cnt-link", "label": "CNT." }
+    ]
+  },
+  "footer": {
+    "brand": "RIZKI",
+    "links": [
+      {
+        "href": "https://github.com/rzkir20",
+        "id": "foot-gh-link",
+        "label": "GITHUB"
+      },
+      {
+        "href": "https://www.tiktok.com/@rzkir.20",
+        "id": "foot-tk-link",
+        "label": "TIKTOK"
+      },
+      {
+        "href": "https://www.linkedin.com/in/rizki-ramadhan12",
+        "id": "foot-li-link",
+        "label": "LINKEDIN"
+      }
+    ],
+    "tagline": {
+      "lines": ["DESIGNED TO BE BROKEN.", "ALL RIGHTS RESERVED."]
+    }
+  }
 }

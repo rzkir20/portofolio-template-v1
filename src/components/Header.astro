@@ -1,23 +1,131 @@
 ---
 import Zap from "@lucide/astro/icons/zap";
+import House from "@lucide/astro/icons/house";
+import Briefcase from "@lucide/astro/icons/briefcase";
+import Trophy from "@lucide/astro/icons/trophy";
+import MessageSquare from "@lucide/astro/icons/message-square";
+import Gamepad2 from "@lucide/astro/icons/gamepad-2";
+import Mail from "@lucide/astro/icons/mail";
+import data from "../assets/data.json";
+
+const { logo, themeToggleAriaLabel, nav } = data.header;
+
+function normalizePath(pathname: string) {
+  const base = pathname.split("#")[0] ?? pathname;
+  if (!base || base === "/") return "/";
+  if (base.length > 1 && base.endsWith("/")) return base.slice(0, -1);
+  return base;
+}
+
+const currentPath = normalizePath(Astro.url.pathname);
+
+function isNavActive(href: string) {
+  return normalizePath(href) === currentPath;
+}
+
+const navIconByHref: Record<string, typeof House> = {
+  "/": House,
+  "/career-timeline": Briefcase,
+  "/achievements": Trophy,
+  "/guestbook": MessageSquare,
+  "/games": Gamepad2,
+  "/contact": Mail,
+};
 ---
 
+<!-- Mobile: Android-style top app bar + bottom navigation -->
+<div class="md:hidden" aria-hidden="false">
+  <header
+    class="fixed top-0 right-0 left-0 z-50 flex items-center justify-between gap-3 border-b-4 border-black bg-white px-3 py-2 pt-[max(0.5rem,env(safe-area-inset-top))] dark:border-white dark:bg-black"
+  >
+    <a
+      href={logo.href}
+      class:list={[
+        "min-w-0 shrink-0 border-2 border-black px-3 py-1.5 font-display text-2xl text-black brutalist-shadow-sm dark:border-white dark:text-white",
+        isNavActive(logo.href) &&
+          "bg-accent text-black dark:bg-accent dark:text-black",
+      ]}
+      aria-label="Home"
+    >
+      {logo.text}
+    </a>
+    <button
+      type="button"
+      data-action="theme-toggle"
+      aria-label={themeToggleAriaLabel}
+      class="shrink-0 border-2 border-black cursor-pointer bg-white p-3 text-black transition-all active:translate-x-0.5 active:translate-y-0.5 dark:border-white dark:bg-black dark:text-white"
+    >
+      <Zap class="size-7 stroke-2" aria-hidden="true" />
+    </button>
+  </header>
+
+  <nav
+    class="fixed right-0 bottom-0 left-0 z-50 border-t-4 border-black bg-white pb-[max(0.35rem,env(safe-area-inset-bottom))] dark:border-white dark:bg-black"
+    aria-label="Primary navigation"
+  >
+    <div
+      class="flex h-18 items-stretch justify-between gap-0.5 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+    >
+      {
+        nav.map((item) => {
+          const active = isNavActive(item.href);
+          const Icon = navIconByHref[item.href] ?? House;
+          return (
+            <a
+              href={item.href}
+              id={item.id}
+              class:list={[
+                "flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-0.5 py-1 transition-colors active:opacity-90",
+                active
+                  ? "text-black dark:text-white"
+                  : "text-zinc-600 dark:text-zinc-400",
+              ]}
+              aria-current={active ? "page" : undefined}
+            >
+              <span
+                class:list={[
+                  "flex size-11 shrink-0 items-center justify-center rounded-2xl border-2 border-transparent transition-colors",
+                  active
+                    ? "border-black bg-accent text-black dark:border-accent dark:bg-accent dark:text-black"
+                    : "text-current",
+                ]}
+              >
+                <Icon class="size-[1.35rem] stroke-[2.2]" aria-hidden="true" />
+              </span>
+              <span class="w-full truncate text-center text-[9px] leading-tight font-bold tracking-tight uppercase">
+                {item.label.replace(/\.$/, "")}
+              </span>
+            </a>
+          );
+        })
+      }
+    </div>
+  </nav>
+</div>
+
+<!-- Desktop: existing brutalist header -->
 <nav
-  class="pointer-events-none fixed top-0 left-0 z-50 flex w-full items-start justify-between p-6"
+  class="pointer-events-none fixed top-0 left-0 z-50 hidden w-full items-start justify-between p-6 md:flex"
+  aria-label="Site navigation"
 >
   <a
-    href="/"
-    id="nav-logo-link"
-    class="pointer-events-auto bg-black p-4 text-white brutalist-border brutalist-shadow-sm dark:bg-accent dark:text-black"
+    href={logo.href}
+    id={logo.id}
+    class:list={[
+      "pointer-events-auto bg-black p-4 text-white brutalist-border brutalist-shadow-sm dark:bg-accent dark:text-black",
+      isNavActive(logo.href) &&
+        "ring-4 ring-accent ring-offset-2 ring-offset-black dark:ring-offset-white",
+    ]}
   >
-    <span class="font-display text-4xl">ALX.</span>
+    <span class="font-display text-4xl">{logo.text}</span>
   </a>
 
   <div class="pointer-events-auto flex flex-col gap-2">
     <button
       type="button"
+      data-action="theme-toggle"
       id="theme-toggle"
-      aria-label="Toggle theme"
+      aria-label={themeToggleAriaLabel}
       class="bg-white p-4 text-black transition-all brutalist-border brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none dark:bg-black dark:text-white"
     >
       <Zap class="size-8 stroke-2" aria-hidden="true" />
@@ -25,24 +133,35 @@ import Zap from "@lucide/astro/icons/zap";
     <div
       class="flex flex-col gap-4 bg-black p-4 text-sm font-bold text-white brutalist-border brutalist-shadow-sm dark:bg-white dark:text-black"
     >
-      <a href="/career-timeline" id="nav-exp-link" class="hover:text-accent">EXP.</a
-      >
-      <a href="/achievements" id="nav-awd-link" class="hover:text-accent"
-        >AWD.</a
-      >
-      <a href="/guestbook" id="nav-guestbook-link" class="hover:text-accent"
-        >GBK.</a
-      >
-      <a href="/games" id="nav-arc-link" class="hover:text-accent">ARC.</a>
-      <a href="/contact" id="nav-cnt-link" class="hover:text-accent">CNT.</a>
+      {
+        nav.map((item) => {
+          const active = isNavActive(item.href);
+          return (
+            <a
+              href={item.href}
+              id={`${item.id}-desktop`}
+              class:list={[
+                "transition-colors hover:text-accent",
+                active &&
+                  "text-accent underline decoration-4 underline-offset-4 dark:text-accent",
+              ]}
+              aria-current={active ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
     </div>
   </div>
 </nav>
 
 <script is:inline>
-  document.getElementById("theme-toggle")?.addEventListener("click", () => {
-    const root = document.documentElement;
-    const isDark = root.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+  document.querySelectorAll('[data-action="theme-toggle"]').forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
   });
 </script>

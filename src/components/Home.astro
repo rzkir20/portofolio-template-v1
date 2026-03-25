@@ -4,66 +4,92 @@ import ShieldCheck from "@lucide/astro/icons/shield-check";
 import Users from "@lucide/astro/icons/users";
 import MessageSquare from "@lucide/astro/icons/message-square";
 import Gamepad2 from "@lucide/astro/icons/gamepad-2";
+import data from "../assets/data.json";
+import profileImage from "../assets/me.jpeg";
+
+const home = data.home;
+
+const highlightIconMap = {
+  trophy: Trophy,
+  "shield-check": ShieldCheck,
+  users: Users,
+} as const;
+
+type HighlightIconKey = keyof typeof highlightIconMap;
+
+const featureIconMap = {
+  "message-square": MessageSquare,
+  "gamepad-2": Gamepad2,
+} as const;
+
+type FeatureIconKey = keyof typeof featureIconMap;
 ---
 
-<main>
+<main class="overflow-x-hidden">
   <!-- Hero -->
   <section
     id="home"
-    class="relative flex min-h-screen items-center overflow-hidden pt-24 pb-12"
+    class="relative flex min-h-screen items-center overflow-hidden pt-20 pb-8 sm:pt-24 sm:pb-12"
   >
     <div
-      class="pointer-events-none absolute top-1/4 -left-20 -rotate-12 select-none font-display text-[20vw] whitespace-nowrap opacity-5 dark:opacity-10"
+      class="pointer-events-none absolute top-1/4 -left-16 max-w-[120vw] -rotate-12 select-none font-display text-[clamp(3.5rem,20vw,14rem)] leading-none whitespace-nowrap opacity-5 sm:-left-20 dark:opacity-10"
     >
-      EXPERIMENTAL
+      {home.hero.backgroundWord}
     </div>
 
-    <div class="relative z-10 container mx-auto px-6">
-      <div class="flex flex-col items-start gap-8 lg:flex-row">
-        <div class="lg:w-2/3">
+    <div class="relative z-10 container mx-auto px-4 sm:px-6">
+      <div class="flex flex-col items-start gap-8 lg:flex-row lg:items-center">
+        <div class="min-w-0 w-full lg:w-2/3">
           <div
-            class="mb-8 inline-block bg-accent px-4 py-1 text-xl font-bold text-black brutalist-border"
+            class="mb-6 sm:mb-8 inline-block max-w-full bg-accent px-3 py-1 text-base font-bold text-black brutalist-border sm:px-4 sm:text-xl"
           >
-            AVAILABLE FOR HIRE
+            {home.hero.badge}
           </div>
-          <h1 class="mb-4 font-display text-[12vw] leading-none lg:text-[10vw]">
-            CRAFTING <br />
-            <span class="bg-black px-4 text-white dark:bg-white dark:text-black"
-              >DI-GI-TAL</span
+          <h1
+            class="mb-4 max-w-full wrap-break-word font-display text-[clamp(2.25rem,9.5vw+0.5rem,7.5rem)] leading-[0.92]"
+          >
+            {home.hero.title.before}
+            <br />
+            <span
+              class="box-decoration-clone bg-black px-2 py-1 text-white sm:px-4 sm:py-0 dark:bg-white dark:text-black"
+              >{home.hero.title.highlight}</span
             ><br />
-            CHAOS.
+            {home.hero.title.after}
           </h1>
           <p
-            class="mt-8 mb-12 max-w-2xl border-l-8 border-black pl-6 text-2xl font-bold lg:text-3xl dark:border-white"
+            class="mt-6 mb-8 max-w-2xl border-l-4 border-black pl-4 text-lg font-bold sm:mt-8 sm:mb-12 sm:border-l-8 sm:pl-6 sm:text-2xl lg:text-3xl dark:border-white"
           >
-            FULLSTACK DEVELOPER & VISUAL TERRORIST. <br />
-            BREAKING GRIDS SINCE 2018.
+            {
+              home.hero.taglines.map((line, i) => (
+                <>
+                  {i > 0 && <br />}
+                  {line}
+                </>
+              ))
+            }
           </p>
-          <div class="flex flex-wrap gap-6">
-            <a
-              href="/contact"
-              id="cta-hero-work"
-              class="glitch bg-accent px-10 py-6 text-2xl font-display text-black transition-all brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none"
-            >
-              LET'S WORK
-            </a>
-            <a
-              href="/contact#cv"
-              id="cta-hero-cv"
-              class="bg-white px-10 py-6 text-2xl font-display text-black transition-all brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none dark:bg-black dark:text-white"
-            >
-              GET CV
-            </a>
+          <div
+            class="flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-6"
+          >
+            {
+              home.hero.ctas.map((cta) => (
+                <a href={cta.href} id={cta.id} class={cta.class}>
+                  {cta.label}
+                </a>
+              ))
+            }
           </div>
         </div>
 
-        <div class="relative mt-12 lg:mt-0 lg:w-1/3">
+        <div
+          class="relative mt-10 w-full shrink-0 pb-14 sm:pb-16 lg:mt-0 lg:w-1/3 lg:pb-0"
+        >
           <div
-            class="relative aspect-3/4 w-full overflow-hidden bg-zinc-200 grayscale transition-all brutalist-border brutalist-shadow hover:grayscale-0"
+            class="relative mx-auto aspect-3/4 max-w-md overflow-hidden bg-zinc-200 grayscale transition-all brutalist-border brutalist-shadow hover:grayscale-0 sm:max-w-none lg:mx-0"
           >
             <img
-              src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop"
-              alt="Profile"
+              src={profileImage.src}
+              alt={home.hero.profile.alt}
               class="h-full w-full object-cover"
             />
             <div
@@ -72,9 +98,9 @@ import Gamepad2 from "@lucide/astro/icons/gamepad-2";
             </div>
           </div>
           <div
-            class="absolute -right-8 -bottom-8 rotate-6 border-4 border-black bg-black p-6 font-display text-4xl text-white brutalist-border brutalist-shadow-sm dark:bg-white dark:text-black dark:border-white"
+            class="absolute right-2 bottom-2 rotate-6 border-4 border-black bg-black p-3 font-display text-2xl text-white brutalist-border brutalist-shadow-sm sm:-right-6 sm:-bottom-6 sm:p-5 sm:text-3xl md:-right-8 md:-bottom-8 md:p-6 md:text-4xl dark:border-white dark:bg-white dark:text-black"
           >
-            ALEX
+            {home.hero.profile.nameBadge}
           </div>
         </div>
       </div>
@@ -86,204 +112,172 @@ import Gamepad2 from "@lucide/astro/icons/gamepad-2";
     class="overflow-hidden border-y-8 border-black bg-black py-6 whitespace-nowrap text-white dark:border-white dark:bg-accent dark:text-black"
   >
     <div class="animate-marquee flex gap-12 font-display text-4xl">
-      <span
-        >WEB DEVELOPMENT // UI DESIGN // CREATIVE CODING // 3D MODELLING //
-        BRANDING // SYSTEM ARCHITECTURE //
-      </span>
-      <span
-        >WEB DEVELOPMENT // UI DESIGN // CREATIVE CODING // 3D MODELLING //
-        BRANDING // SYSTEM ARCHITECTURE //
-      </span>
+      <span>{home.marquee.text}</span>
+      <span>{home.marquee.text}</span>
     </div>
   </div>
 
   <!-- Experience -->
   <section
     id="experience"
-    class="overflow-hidden bg-zinc-100 py-24 dark:bg-zinc-900"
+    class="overflow-hidden bg-zinc-100 py-12 sm:py-16 lg:py-24 dark:bg-zinc-900"
   >
-    <div class="container mx-auto px-6">
-      <h2 class="diagonal-text mb-16 font-display text-7xl lg:text-9xl">
-        EXPERIENCE
+    <div class="container mx-auto px-4 sm:px-6">
+      <h2
+        class="diagonal-text mb-8 font-display text-4xl sm:mb-12 sm:text-6xl md:mb-16 md:text-7xl lg:text-9xl"
+      >
+        {home.experience.title}
       </h2>
 
       <div
-        class="grid grid-cols-1 gap-0 border-8 border-black lg:grid-cols-2 dark:border-white"
+        class="grid grid-cols-1 gap-0 border-4 border-black sm:border-8 lg:grid-cols-2 dark:border-white"
       >
-        <div
-          class="group border-b-8 border-black p-12 transition-colors hover:bg-accent hover:text-black lg:border-r-8 lg:border-b-0 dark:border-white"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-4xl">01</span>
-            <span class="bg-black px-4 py-1 font-bold text-white">2022-NOW</span
-            >
-          </div>
-          <h3 class="mb-4 font-display text-5xl">SENIOR DEV</h3>
-          <p class="mb-8 text-xl font-bold">TECHNOVA SOLUTIONS // REMOTE</p>
-          <p class="text-lg leading-relaxed">
-            LEAD ARCHITECT FOR SCALABLE FRONTEND SYSTEMS. OPTIMIZING RUNTIME
-            PERFORMANCE BY 40% THROUGH RADICAL REFACTORS.
-          </p>
-        </div>
-
-        <div
-          class="group p-12 transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-4xl">02</span>
-            <span class="bg-accent px-4 py-1 font-bold text-black"
-              >2020-2022</span
-            >
-          </div>
-          <h3 class="mb-4 font-display text-5xl">UI DESIGNER</h3>
-          <p class="mb-8 text-xl font-bold">CREATIVE STUDIO // JKT</p>
-          <p class="text-lg leading-relaxed">
-            TRANSFORMING COMPLEX USER FLOWS INTO VISUALLY AGGRESSIVE INTERFACES.
-            CREATED 20+ AWARD-WINNING IDENTITIES.
-          </p>
-        </div>
+        {
+          home.experience.items.map((item) => (
+            <div class={item.cardClass}>
+              <div class="mb-4 flex flex-wrap gap-2 sm:mb-6 sm:items-start sm:justify-between">
+                <span class="font-display text-3xl sm:text-4xl">
+                  {item.index}
+                </span>
+                <span class={item.periodBadgeClass}>{item.period}</span>
+              </div>
+              <h3 class="mb-3 wrap-break-word font-display text-3xl sm:mb-4 sm:text-4xl md:text-5xl">
+                {item.role}
+              </h3>
+              <p class="mb-6 text-lg font-bold sm:mb-8 sm:text-xl">
+                {item.company}
+              </p>
+              <p class="text-base leading-relaxed sm:text-lg">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- Achievements -->
-  <section id="achievements" class="py-24">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-wrap gap-8">
-        <div
-          class="min-w-[300px] flex-1 rotate-2 bg-black p-12 text-white brutalist-border brutalist-shadow"
-        >
-          <Trophy
-            class="mb-6 size-18 stroke-[1.5] text-accent"
-            aria-hidden="true"
-          />
-          <h3 class="mb-4 font-display text-4xl">SITE OF THE MONTH</h3>
-          <p class="text-lg opacity-80">
-            AWWWARDS RECOGNITION FOR PROJECT 'STELLAR'.
-          </p>
-        </div>
-        <div
-          class="min-w-[300px] flex-1 -rotate-2 bg-accent p-12 text-black brutalist-border brutalist-shadow"
-        >
-          <ShieldCheck class="mb-6 size-18 stroke-[1.5]" aria-hidden="true" />
-          <h3 class="mb-4 font-display text-4xl">CERTIFIED ARCHITECT</h3>
-          <p class="text-lg opacity-80">
-            AWS SOLUTIONS PROFESSIONAL CERTIFICATION.
-          </p>
-        </div>
-        <div
-          class="min-w-[300px] flex-1 rotate-1 border-4 border-black bg-white p-12 text-black brutalist-border brutalist-shadow dark:border-white dark:bg-zinc-100"
-        >
-          <Users class="mb-6 size-18 stroke-[1.5]" aria-hidden="true" />
-          <h3 class="mb-4 font-display text-4xl">TOP CONTRIBUTOR</h3>
-          <p class="text-lg opacity-80">
-            TOP 5% IN GLOBAL OPEN SOURCE CONTRIBUTIONS.
-          </p>
-        </div>
+  <section id="achievements" class="py-12 sm:py-16 lg:py-24">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div
+        class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-3"
+      >
+        {
+          home.highlights.map((card) => {
+            const Icon = highlightIconMap[card.icon as HighlightIconKey];
+            return (
+              <div class={`min-w-0 ${card.cardClass}`}>
+                <Icon class={card.iconClass} aria-hidden="true" />
+                <h3 class="mb-3 wrap-break-word font-display text-2xl sm:mb-4 sm:text-3xl md:text-4xl">
+                  {card.title}
+                </h3>
+                <p class="text-base opacity-80 sm:text-lg">
+                  {card.description}
+                </p>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   </section>
 
   <!-- Guestbook & Arcade -->
-  <section class="bg-black py-24">
-    <div class="container mx-auto grid grid-cols-1 gap-12 px-6 md:grid-cols-2">
-      <div
-        id="guestbook"
-        class="group relative overflow-hidden bg-white p-12 brutalist-border brutalist-shadow"
-      >
-        <div class="relative z-10">
-          <h3 class="mb-6 font-display text-6xl">GUESTBOOK</h3>
-          <p class="mb-10 text-xl font-bold">
-            LEAVE YOUR MARK. TELL ME I'M CRAZY.
-          </p>
-          <a
-            href="/guestbook"
-            id="btn-guestbook-link"
-            class="inline-block bg-black px-8 py-4 text-2xl font-display text-white transition-all hover:bg-accent hover:text-black brutalist-border"
-          >
-            SIGN NOW
-          </a>
-        </div>
-        <MessageSquare
-          class="absolute -right-12 -bottom-12 size-[200px] stroke-1 opacity-10 transition-transform group-hover:scale-110"
-          aria-hidden="true"
-        />
-      </div>
-
-      <div
-        id="games"
-        class="group relative overflow-hidden border-4 border-black bg-accent p-12 brutalist-border brutalist-shadow dark:border-white"
-      >
-        <div class="relative z-10">
-          <h3 class="mb-6 font-display text-6xl">ARCADE</h3>
-          <p class="mb-10 text-xl font-bold">
-            WASTE SOME TIME. PLAY MINI GAMES.
-          </p>
-          <a
-            href="/games"
-            id="btn-games-link"
-            class="inline-block bg-black px-8 py-4 text-2xl font-display text-white transition-all hover:bg-white hover:text-black brutalist-border"
-          >
-            PLAY GAME
-          </a>
-        </div>
-        <Gamepad2
-          class="absolute -right-12 -bottom-12 size-[200px] stroke-1 opacity-20 transition-transform group-hover:scale-110"
-          aria-hidden="true"
-        />
-      </div>
+  <section class="bg-black py-12 sm:py-16 lg:py-24">
+    <div
+      class="container mx-auto grid grid-cols-1 gap-8 px-4 sm:gap-10 sm:px-6 md:grid-cols-2 md:gap-12"
+    >
+      {
+        home.featurePanels.map((panel) => {
+          const Icon = featureIconMap[panel.icon as FeatureIconKey];
+          return (
+            <div id={panel.sectionId} class={panel.wrapperClass}>
+              <div class="relative z-10 min-w-0">
+                <h3 class="mb-4 wrap-break-word font-display text-3xl sm:mb-6 sm:text-5xl md:text-6xl">
+                  {panel.title}
+                </h3>
+                <p class="mb-6 text-lg font-bold sm:mb-10 sm:text-xl">
+                  {panel.description}
+                </p>
+                <a
+                  href={panel.href}
+                  id={panel.buttonId}
+                  class={panel.buttonClass}
+                >
+                  {panel.buttonLabel}
+                </a>
+              </div>
+              <Icon class={panel.iconClass} aria-hidden="true" />
+            </div>
+          );
+        })
+      }
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="relative py-24">
-    <div class="container mx-auto max-w-4xl px-6">
-      <div class="mb-16 text-center">
-        <h2 class="mb-4 font-display text-[10vw]">LET'S TALK</h2>
-        <p class="text-2xl font-bold tracking-widest uppercase">
-          NO SOFT EMAILS. BE BOLD.
+  <section id="contact" class="relative py-12 sm:py-16 lg:py-24">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="mb-8 text-center sm:mb-12 lg:mb-16">
+        <h2
+          class="mb-3 font-display text-[clamp(2.5rem,12vw,5.5rem)] leading-[0.95] sm:mb-4"
+        >
+          {home.contact.title}
+        </h2>
+        <p
+          class="px-2 text-base font-bold tracking-wider uppercase sm:text-xl md:text-2xl md:tracking-widest"
+        >
+          {home.contact.subtitle}
         </p>
       </div>
 
       <form
-        id="contact-form"
-        class="grid grid-cols-1 gap-8 bg-white p-12 brutalist-border brutalist-shadow dark:bg-zinc-900"
+        id={home.contact.formId}
+        data-home-contact-form
+        class="grid grid-cols-1 gap-6 bg-white p-4 brutalist-border brutalist-shadow sm:gap-8 sm:p-8 md:p-12 dark:bg-zinc-900"
       >
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
           <div class="space-y-2">
-            <label class="font-display text-xl">YOUR NAME</label>
+            <label class="font-display text-lg sm:text-xl"
+              >{home.contact.name.label}</label
+            >
             <input
               type="text"
-              name="name"
-              placeholder="ANONYMOUS"
-              class="w-full border-4 border-black bg-transparent p-6 transition-all outline-none focus:bg-accent focus:text-black dark:border-white"
+              name={home.contact.name.name}
+              placeholder={home.contact.name.placeholder}
+              class="w-full min-w-0 border-4 border-black bg-transparent p-4 transition-all outline-none focus:bg-accent focus:text-black sm:p-6 dark:border-white"
             />
           </div>
           <div class="space-y-2">
-            <label class="font-display text-xl">YOUR EMAIL</label>
+            <label class="font-display text-lg sm:text-xl"
+              >{home.contact.email.label}</label
+            >
             <input
               type="email"
-              name="email"
-              placeholder="HACKER@WEB.COM"
-              class="w-full border-4 border-black bg-transparent p-6 transition-all outline-none focus:bg-accent focus:text-black dark:border-white"
+              name={home.contact.email.name}
+              placeholder={home.contact.email.placeholder}
+              class="w-full min-w-0 border-4 border-black bg-transparent p-4 transition-all outline-none focus:bg-accent focus:text-black sm:p-6 dark:border-white"
             />
           </div>
         </div>
         <div class="space-y-2">
-          <label class="font-display text-xl">THE MISSION</label>
+          <label class="font-display text-lg sm:text-xl"
+            >{home.contact.message.label}</label
+          >
           <textarea
-            name="message"
-            rows="5"
-            placeholder="TELL ME THE PROJECT DETAILS..."
-            class="w-full resize-none border-4 border-black bg-transparent p-6 transition-all outline-none focus:bg-accent focus:text-black dark:border-white"
+            name={home.contact.message.name}
+            rows={home.contact.message.rows}
+            placeholder={home.contact.message.placeholder}
+            class="w-full min-w-0 resize-none border-4 border-black bg-transparent p-4 transition-all outline-none focus:bg-accent focus:text-black sm:p-6 dark:border-white"
           ></textarea>
         </div>
         <button
           type="submit"
-          id="contact-btn-submit"
-          class="w-full border-4 border-black bg-black py-8 font-display text-4xl text-white transition-all hover:bg-accent hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-accent dark:hover:text-black"
+          id={home.contact.submitButtonId}
+          class="w-full border-4 border-black bg-black py-5 font-display text-2xl text-white transition-all hover:bg-accent hover:text-black sm:py-8 sm:text-4xl dark:border-white dark:bg-white dark:text-black dark:hover:bg-accent dark:hover:text-black"
         >
-          EXECUTE SEND
+          {home.contact.submitLabel}
         </button>
       </form>
     </div>
@@ -291,7 +285,9 @@ import Gamepad2 from "@lucide/astro/icons/gamepad-2";
 </main>
 
 <script is:inline>
-  document.getElementById("contact-form")?.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
+  document
+    .querySelector("[data-home-contact-form]")
+    ?.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
 </script>

@@ -1,25 +1,32 @@
 ---
 import Flame from "@lucide/astro/icons/flame";
+import data from "../assets/data.json";
+
+const gb = data.guestbook;
 ---
 
 <main class="pt-32 pb-24">
 	<section class="container mx-auto mb-24 px-6">
 		<div class="flex flex-col items-end gap-4 lg:flex-row">
 			<h1 class="mb-0 font-display text-[10vw] leading-none">
-				GUEST <br />
-				<span class="bg-accent px-4 text-black">BOOK</span>
+				{gb.header.titleLine} <br />
+				<span class="bg-accent px-4 text-black">{gb.header.titleHighlight}</span>
 			</h1>
 			<div
 				class="mb-4 bg-black px-6 py-2 font-bold text-xl text-white brutalist-border lg:mb-8 dark:bg-white dark:text-black"
 			>
-				v2.4.0
+				{gb.header.version}
 			</div>
 		</div>
 		<p
 			class="mt-8 max-w-2xl border-l-8 border-black pl-6 text-2xl font-bold dark:border-white"
 		>
-			SAY SOMETHING. LEAVE A TRACE. <br />
-			VANDALISM IS WELCOME HERE.
+			{gb.intro.lines.map((line, i) => (
+				<>
+					{i > 0 && <br />}
+					{line}
+				</>
+			))}
 		</p>
 	</section>
 
@@ -27,33 +34,39 @@ import Flame from "@lucide/astro/icons/flame";
 		<aside class="lg:col-span-5">
 			<div class="sticky top-32">
 				<div class="bg-white p-8 brutalist-border brutalist-shadow dark:bg-zinc-900">
-					<h2 class="mb-8 font-display text-4xl">SIGN THE BOOK</h2>
-					<form id="guestbook-form" class="space-y-6">
+					<h2 class="mb-8 font-display text-4xl">{gb.form.title}</h2>
+					<form
+						id="guestbook-form"
+						class="space-y-6"
+						data-label-submit={gb.form.submitLabel}
+						data-label-submitting={gb.form.submittingLabel}
+						data-label-success={gb.form.successLabel}
+					>
 						<div class="space-y-2">
-							<label class="font-display text-lg">WHO ARE YOU?</label>
+							<label class="font-display text-lg">{gb.form.name.label}</label>
 							<input
 								type="text"
-								name="name"
-								placeholder="ANONYMOUS_USER"
+								name={gb.form.name.name}
+								placeholder={gb.form.name.placeholder}
 								required
 								class="w-full border-4 border-black bg-transparent p-6 transition-all outline-none placeholder:opacity-30 focus:bg-accent focus:text-black dark:border-white"
 							/>
 						</div>
 						<div class="space-y-2">
-							<label class="font-display text-lg">EMAIL (OPTIONAL)</label>
+							<label class="font-display text-lg">{gb.form.email.label}</label>
 							<input
 								type="email"
-								name="email"
-								placeholder="GHOST@PROTO.COL"
+								name={gb.form.email.name}
+								placeholder={gb.form.email.placeholder}
 								class="w-full border-4 border-black bg-transparent p-6 transition-all outline-none placeholder:opacity-30 focus:bg-accent focus:text-black dark:border-white"
 							/>
 						</div>
 						<div class="space-y-2">
-							<label class="font-display text-lg">YOUR MANIFESTO</label>
+							<label class="font-display text-lg">{gb.form.message.label}</label>
 							<textarea
-								name="message"
-								rows="5"
-								placeholder="TYPE YOUR MESSAGE HERE..."
+								name={gb.form.message.name}
+								rows={gb.form.message.rows}
+								placeholder={gb.form.message.placeholder}
 								required
 								class="w-full resize-none border-4 border-black bg-transparent p-6 transition-all outline-none placeholder:opacity-30 focus:bg-accent focus:text-black dark:border-white"
 							></textarea>
@@ -63,14 +76,14 @@ import Flame from "@lucide/astro/icons/flame";
 							id="btn-submit-guestbook"
 							class="glitch w-full bg-black py-6 font-display text-3xl text-white transition-all brutalist-border hover:bg-accent hover:text-black dark:bg-white dark:text-black dark:hover:bg-accent dark:hover:text-black"
 						>
-							SUBMIT LOG
+							{gb.form.submitLabel}
 						</button>
 					</form>
 				</div>
 
 				<div class="mt-8 rotate-2 bg-accent p-6 text-black brutalist-border">
 					<p class="text-lg font-bold tracking-tighter uppercase">
-						NOTE: MESSAGES ARE PUBLIC. DON'T BE A COWARD.
+						{gb.note}
 					</p>
 				</div>
 			</div>
@@ -78,77 +91,28 @@ import Flame from "@lucide/astro/icons/flame";
 
 		<section class="lg:col-span-7">
 			<div class="mb-12 flex items-center justify-between">
-				<h2 class="font-display text-5xl">LOGGED_ENTRY</h2>
-				<div class="font-bold">[ 24 ENTRIES ]</div>
+				<h2 class="font-display text-5xl">{gb.list.title}</h2>
+				<div class="font-bold">{gb.list.entriesBadge}</div>
 			</div>
 
 			<div id="message-list" class="grid grid-cols-1 gap-12">
-				<div
-					class="group relative bg-white p-8 brutalist-border brutalist-entry-card dark:bg-zinc-900"
-				>
-					<div class="mb-6 flex items-start justify-between">
-						<div
-							class="bg-black px-4 py-1 font-bold text-white dark:bg-accent dark:text-black"
-						>
-							0x0F4
+				{
+					gb.entries.map((entry) => (
+						<div class={entry.cardClass}>
+							<div class="mb-6 flex items-start justify-between">
+								<div class={entry.badgeClass}>{entry.id}</div>
+								<span class="text-sm font-bold opacity-60">{entry.datetime}</span>
+							</div>
+							<h3 class="mb-4 font-display text-3xl">{entry.author}</h3>
+							<p class={entry.messageClass}>{entry.message}</p>
+							{entry.showFlame ? (
+								<div class="absolute -right-4 -bottom-4 hidden bg-white p-2 brutalist-border group-hover:block dark:bg-zinc-800">
+									<Flame class="size-8 stroke-[1.5] text-red-500" aria-hidden="true" />
+								</div>
+							) : null}
 						</div>
-						<span class="text-sm font-bold opacity-60">2024-05-12 // 14:20</span>
-					</div>
-					<h3 class="mb-4 font-display text-3xl">CYBER_VANDAL</h3>
-					<p class="text-xl leading-relaxed">
-						LOVE THE BRUTALIST VIBE. IT'S RAW, IT'S UNFILTERED. KEEP BREAKING THE WEB.
-					</p>
-					<div
-						class="absolute -right-4 -bottom-4 hidden bg-white p-2 brutalist-border group-hover:block dark:bg-zinc-800"
-					>
-						<Flame class="size-8 stroke-[1.5] text-red-500" aria-hidden="true" />
-					</div>
-				</div>
-
-				<div
-					class="group relative -rotate-1 bg-black p-8 text-white brutalist-border brutalist-entry-card dark:bg-white dark:text-black"
-				>
-					<div class="mb-6 flex items-start justify-between">
-						<div class="bg-accent px-4 py-1 font-bold text-black">0x0F3</div>
-						<span class="text-sm font-bold opacity-60">2024-05-11 // 09:45</span>
-					</div>
-					<h3 class="mb-4 font-display text-3xl">SARAH_D</h3>
-					<p class="text-xl leading-relaxed">
-						FINALLY A PORTFOLIO THAT DOESN'T LOOK LIKE A NOTION PAGE. REFRESHING.
-					</p>
-				</div>
-
-				<div
-					class="group relative rotate-1 bg-accent p-8 text-black brutalist-border brutalist-entry-card"
-				>
-					<div class="mb-6 flex items-start justify-between">
-						<div class="bg-black px-4 py-1 font-bold text-white">0x0F2</div>
-						<span class="text-sm font-bold opacity-60">2024-05-10 // 22:12</span>
-					</div>
-					<h3 class="mb-4 font-display text-3xl">KODER_X</h3>
-					<p
-						class="text-xl leading-relaxed font-bold italic underline decoration-4"
-					>
-						GLITCH IN THE MATRIX FOUND. I'M STAYING HERE FOREVER.
-					</p>
-				</div>
-
-				<div
-					class="group relative bg-white p-8 brutalist-border brutalist-entry-card dark:bg-zinc-900"
-				>
-					<div class="mb-6 flex items-start justify-between">
-						<div
-							class="bg-black px-4 py-1 font-bold text-white dark:bg-accent dark:text-black"
-						>
-							0x0F1
-						</div>
-						<span class="text-sm font-bold opacity-60">2024-05-08 // 11:30</span>
-					</div>
-					<h3 class="mb-4 font-display text-3xl">ANON_99</h3>
-					<p class="text-xl leading-relaxed">
-						JUST DROPPING BY TO SAY HI. THE DESIGN IS AGGRESSIVE BUT I LIKE IT.
-					</p>
-				</div>
+					))
+				}
 			</div>
 
 			<button
@@ -156,7 +120,7 @@ import Flame from "@lucide/astro/icons/flame";
 				id="btn-load-more"
 				class="mt-16 w-full bg-black p-8 font-display text-2xl text-white transition-all brutalist-border hover:bg-accent hover:text-black dark:bg-white dark:text-black dark:hover:bg-accent dark:hover:text-black"
 			>
-				LOAD_ANOTHER_PAGE
+				{gb.list.loadMoreLabel}
 			</button>
 		</section>
 	</div>
@@ -164,23 +128,26 @@ import Flame from "@lucide/astro/icons/flame";
 
 <script is:inline>
 	const form = document.getElementById("guestbook-form");
+	const btn = document.getElementById("btn-submit-guestbook");
 	form?.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const btn = document.getElementById("btn-submit-guestbook");
-		if (!btn) return;
-		const originalText = btn.innerText;
+		if (!btn || !form) return;
 
-		btn.innerText = "LOGGING...";
+		const original = form.dataset.labelSubmit ?? btn.innerText;
+		const submitting = form.dataset.labelSubmitting ?? "LOGGING...";
+		const success = form.dataset.labelSuccess ?? "SUCCESS // LOGGED";
+
+		btn.innerText = submitting;
 		btn.classList.add("animate-pulse");
 
 		setTimeout(() => {
-			btn.innerText = "SUCCESS // LOGGED";
+			btn.innerText = success;
 			btn.classList.remove("animate-pulse");
 			btn.classList.add("bg-green-500", "text-black");
 			form.reset();
 
 			setTimeout(() => {
-				btn.innerText = originalText;
+				btn.innerText = original;
 				btn.classList.remove("bg-green-500", "text-black");
 			}, 3000);
 		}, 1500);

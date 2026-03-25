@@ -1,5 +1,27 @@
 ---
 import Zap from "@lucide/astro/icons/zap";
+
+import data from "../assets/data.json";
+
+const career = data.career as unknown as CareerEntry[];
+
+const cardToneClass: Record<CareerTone, string> = {
+  accent: "bg-accent text-black",
+  surface: "bg-white text-black dark:bg-zinc-900 dark:text-white",
+  inverted: "bg-black text-white dark:bg-white dark:text-black",
+};
+
+const periodClass: Record<PeriodStyle, string> = {
+  onDark: "bg-black px-4 py-1 font-bold text-white",
+  onAccent: "bg-accent px-4 py-1 font-bold text-black",
+};
+
+const tagClass: Record<TagStyle, string> = {
+  pillDark: "bg-black px-3 py-1 text-sm font-bold text-white",
+  outline:
+    "border-2 border-black px-3 py-1 text-sm font-bold dark:border-white",
+  pillAccent: "bg-accent px-3 py-1 text-sm font-bold text-black",
+};
 ---
 
 <main style="view-transition-name: main-content" class="pt-32 pb-24">
@@ -33,183 +55,51 @@ import Zap from "@lucide/astro/icons/zap";
     </div>
 
     <div class="relative z-10 space-y-16 lg:space-y-32">
-      <!-- 01 -->
-      <div
-        class="group flex flex-col items-center justify-start lg:flex-row lg:items-start"
-      >
-        <div
-          class="w-full rotate-1 bg-accent p-10 text-black transition-transform duration-300 group-hover:rotate-0 lg:w-[45%] brutalist-border brutalist-shadow"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-5xl">01</span>
-            <span class="bg-black px-4 py-1 font-bold text-white"
-              >2023 - NOW</span
+      {
+        career.map((item, i) => {
+          const num = String(i + 1).padStart(2, "0");
+          const rowJustify = item.rowEnd ? "justify-end" : "justify-start";
+          return (
+            <div
+              class:list={[
+                "group flex flex-col items-center lg:flex-row lg:items-start",
+                rowJustify,
+              ]}
             >
-          </div>
-          <h2 class="mb-2 font-display text-4xl lg:text-5xl">SENIOR LEAD</h2>
-          <p class="mb-6 text-xl font-bold">FUTURESCALE // REMOTE</p>
-          <p class="mb-8 text-lg leading-relaxed italic">
-            &ldquo;REVOLUTIONIZING CLOUD DASHBOARDS WITH HIGH-CONTRAST DATA
-            VISUALIZATION AND ATOMIC DESIGN SYSTEMS.&rdquo;
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >NEXT.JS</span
-            >
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >TURBO REPO</span
-            >
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >AWS</span
-            >
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >D3.JS</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- 02 -->
-      <div
-        class="group flex flex-col items-center justify-end lg:flex-row lg:items-start"
-      >
-        <div
-          class="w-full -rotate-2 bg-white p-10 text-black transition-transform duration-300 group-hover:rotate-0 lg:w-[45%] brutalist-border brutalist-shadow dark:bg-zinc-900 dark:text-white"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-5xl">02</span>
-            <span class="bg-accent px-4 py-1 font-bold text-black"
-              >2021 - 2023</span
-            >
-          </div>
-          <h2 class="mb-2 font-display text-4xl lg:text-5xl">FULL STACK</h2>
-          <p class="mb-6 text-xl font-bold">NEOCORE SYSTEMS // BERLIN</p>
-          <p class="mb-8 text-lg leading-relaxed">
-            DEVELOPED REAL-TIME TRADING ENGINES AND ROBUST GRAPHQL APIS. SCALED
-            TRAFFIC FROM 10K TO 1M MAU WITHOUT DOWNTIME.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >TYPESCRIPT</span
-            >
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >RUST</span
-            >
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >POSTGRES</span
-            >
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >REDIS</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- 03 -->
-      <div
-        class="group flex flex-col items-center justify-start lg:flex-row lg:items-start"
-      >
-        <div
-          class="w-full rotate-2 bg-black p-10 text-white transition-transform duration-300 group-hover:rotate-0 lg:w-[45%] brutalist-border brutalist-shadow dark:bg-white dark:text-black"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-5xl">03</span>
-            <span class="bg-accent px-4 py-1 font-bold text-black"
-              >2019 - 2021</span
-            >
-          </div>
-          <h2 class="mb-2 font-display text-4xl lg:text-5xl">UX ENGINEER</h2>
-          <p class="mb-6 text-xl font-bold">PIXELPUSH STUDIO // JKT</p>
-          <p class="mb-8 text-lg leading-relaxed">
-            WHERE DESIGN MEETS CODE. BUILT HIGH-FIDELITY PROTOTYPES THAT BECAME
-            INDUSTRY STANDARDS IN THE FINTECH SPACE.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-accent px-3 py-1 text-sm font-bold text-black"
-              >VUE 3</span
-            >
-            <span class="bg-accent px-3 py-1 text-sm font-bold text-black"
-              >FRAMER MOTION</span
-            >
-            <span class="bg-accent px-3 py-1 text-sm font-bold text-black"
-              >FIGMA</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- 04 -->
-      <div
-        class="group flex flex-col items-center justify-end lg:flex-row lg:items-start"
-      >
-        <div
-          class="w-full -rotate-1 bg-accent p-10 text-black transition-transform duration-300 group-hover:rotate-0 lg:w-[45%] brutalist-border brutalist-shadow"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-5xl">04</span>
-            <span class="bg-black px-4 py-1 font-bold text-white"
-              >2018 - 2019</span
-            >
-          </div>
-          <h2 class="mb-2 font-display text-4xl lg:text-5xl">JUNIOR DEV</h2>
-          <p class="mb-6 text-xl font-bold">STARTUP HUB // JKT</p>
-          <p class="mb-8 text-lg leading-relaxed">
-            LEARNED THE ROPES. BUILT 50+ LANDING PAGES AND MASTERED THE ART OF
-            THE CLEAN GIT COMMIT.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >JAVASCRIPT</span
-            >
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >PHP</span
-            >
-            <span class="bg-black px-3 py-1 text-sm font-bold text-white"
-              >JQUERY</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- 05 -->
-      <div
-        class="group flex flex-col items-center justify-start lg:flex-row lg:items-start"
-      >
-        <div
-          class="w-full rotate-3 bg-white p-10 text-black transition-transform duration-300 group-hover:rotate-0 lg:w-[45%] brutalist-border brutalist-shadow dark:bg-zinc-900 dark:text-white"
-        >
-          <div class="mb-6 flex items-start justify-between">
-            <span class="font-display text-5xl">05</span>
-            <span class="bg-accent px-4 py-1 font-bold text-black"
-              >2017 - 2018</span
-            >
-          </div>
-          <h2 class="mb-2 font-display text-4xl lg:text-5xl">FREELANCE</h2>
-          <p class="mb-6 text-xl font-bold">VARIOUS CLIENTS // GLOBAL</p>
-          <p class="mb-8 text-lg leading-relaxed">
-            THE HUSTLE. DESIGNED LOGOS, CODED WEBSITES, AND MANAGED CLIENT
-            EXPECTATIONS ACROSS 5 TIMEZONES.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >WP</span
-            >
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >SHOPIFY</span
-            >
-            <span
-              class="border-2 border-black px-3 py-1 text-sm font-bold dark:border-white"
-              >UI/UX</span
-            >
-          </div>
-        </div>
-      </div>
+              <div
+                class:list={[
+                  "w-full p-10 transition-transform duration-300 group-hover:rotate-0 lg:w-[45%] brutalist-border brutalist-shadow",
+                  item.rotate,
+                  cardToneClass[item.tone],
+                ]}
+              >
+                <div class="mb-6 flex items-start justify-between">
+                  <span class="font-display text-5xl">{num}</span>
+                  <span class={periodClass[item.periodStyle]}>
+                    {item.period}
+                  </span>
+                </div>
+                <h2 class="mb-2 font-display text-4xl lg:text-5xl">
+                  {item.title}
+                </h2>
+                <p class="mb-6 text-xl font-bold">{item.company}</p>
+                {item.quote ? (
+                  <p class="mb-8 text-lg leading-relaxed italic">
+                    &ldquo;{item.description}&rdquo;
+                  </p>
+                ) : (
+                  <p class="mb-8 text-lg leading-relaxed">{item.description}</p>
+                )}
+                <div class="flex flex-wrap gap-2">
+                  {item.skills.map((skill) => (
+                    <span class={tagClass[item.tagStyle]}>{skill}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
     </div>
   </section>
 

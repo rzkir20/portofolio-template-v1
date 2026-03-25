@@ -4,49 +4,106 @@ import Header from "../components/Header.astro";
 import "../styles/global.css";
 
 interface Props {
-	title?: string;
+  title?: string;
+  description?: string;
+  /** Path (e.g. `/favicon.svg`) or absolute image URL for Open Graph / Twitter */
+  image?: string;
+  /** Set true to discourage indexing (draft pages) */
+  noindex?: boolean;
 }
 
-const { title = "ALEX // BRUTALIST PORTFOLIO" } = Astro.props;
+const {
+  title = "RIZKI // FULLSTACK DEVELOPER",
+  description = "Fullstack developer & visual designer — brutalist portfolio, web development, and creative coding.",
+  image = "/favicon.svg",
+  noindex = false,
+} = Astro.props;
+
+const siteName = "RIZKI // FULLSTACK DEVELOPER";
+const origin = Astro.site?.origin ?? Astro.url.origin;
+const canonicalURL = new URL(Astro.url.pathname, origin);
+const ogImageURL = image.startsWith("http")
+  ? new URL(image)
+  : new URL(image, origin);
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="view-transition" content="same-origin" />
-		<title>{title}</title>
-		<script is:inline>
-			(function () {
-				const stored = localStorage.getItem("theme");
-				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-				if (stored === "dark" || (stored === null && prefersDark)) {
-					document.documentElement.classList.add("dark");
-				}
-			})();
-		</script>
-	</head>
-	<body>
-		<div
-			id="root"
-			class="min-h-screen transition-colors duration-100 selection:bg-accent selection:text-black"
-		>
-			<Header />
-			<slot />
-			<Footer />
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL.href} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="application-name" content="RIZKI" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="RIZKI" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <title>{title}</title>
+    <script is:inline>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js").catch(() => {});
+      }
+    </script>
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (stored === "dark" || (stored === null && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div
+      id="root"
+      class="min-h-screen transition-colors duration-100 selection:bg-accent selection:text-black"
+    >
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
 </style>

@@ -1,0 +1,20 @@
+{
+  "name": "RIZKI — Brutalist Portfolio",
+  "short_name": "RIZKI",
+  "description": "Fullstack developer portfolio — brutalist design, web development, and creative coding.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ccff00",
+  "lang": "en",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}
