@@ -531,7 +531,7 @@
         "datetime": "2024-05-12 // 14:20",
         "author": "CYBER_VANDAL",
         "message": "LOVE THE BRUTALIST VIBE. IT'S RAW, IT'S UNFILTERED. KEEP BREAKING THE WEB.",
-        "cardClass": "group relative bg-white p-8 brutalist-border brutalist-entry-card dark:bg-zinc-900",
+        "cardClass": "group relative bg-white p-4 brutalist-border brutalist-entry-card sm:p-6 lg:p-8 dark:bg-zinc-900",
         "badgeClass": "bg-black px-4 py-1 font-bold text-white dark:bg-accent dark:text-black",
         "messageClass": "text-xl leading-relaxed",
         "showFlame": true
@@ -541,7 +541,7 @@
         "datetime": "2024-05-11 // 09:45",
         "author": "SARAH_D",
         "message": "FINALLY A PORTFOLIO THAT DOESN'T LOOK LIKE A NOTION PAGE. REFRESHING.",
-        "cardClass": "group relative -rotate-1 bg-black p-8 text-white brutalist-border brutalist-entry-card dark:bg-white dark:text-black",
+        "cardClass": "group relative -rotate-1 bg-black p-4 text-white brutalist-border brutalist-entry-card sm:p-6 lg:p-8 dark:bg-white dark:text-black",
         "badgeClass": "bg-accent px-4 py-1 font-bold text-black",
         "messageClass": "text-xl leading-relaxed",
         "showFlame": false
@@ -551,7 +551,7 @@
         "datetime": "2024-05-10 // 22:12",
         "author": "KODER_X",
         "message": "GLITCH IN THE MATRIX FOUND. I'M STAYING HERE FOREVER.",
-        "cardClass": "group relative rotate-1 bg-accent p-8 text-black brutalist-border brutalist-entry-card",
+        "cardClass": "group relative rotate-1 bg-accent p-4 text-black brutalist-border brutalist-entry-card sm:p-6 lg:p-8",
         "badgeClass": "bg-black px-4 py-1 font-bold text-white",
         "messageClass": "text-xl leading-relaxed font-bold italic underline decoration-4",
         "showFlame": false
@@ -561,7 +561,7 @@
         "datetime": "2024-05-08 // 11:30",
         "author": "ANON_99",
         "message": "JUST DROPPING BY TO SAY HI. THE DESIGN IS AGGRESSIVE BUT I LIKE IT.",
-        "cardClass": "group relative bg-white p-8 brutalist-border brutalist-entry-card dark:bg-zinc-900",
+        "cardClass": "group relative bg-white p-4 brutalist-border brutalist-entry-card sm:p-6 lg:p-8 dark:bg-zinc-900",
         "badgeClass": "bg-black px-4 py-1 font-bold text-white dark:bg-accent dark:text-black",
         "messageClass": "text-xl leading-relaxed",
         "showFlame": false
