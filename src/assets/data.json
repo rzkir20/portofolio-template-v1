@@ -1,0 +1,165 @@
+{
+	"achievements": [
+		{
+			"variant": "yellow",
+			"title": "AWWWARDS SOTD",
+			"description": "Site of the Day recognition for the experimental project \"Hyper-Space\".",
+			"icon": "trophy",
+			"wrapperClass": "transition-transform hover:scale-105"
+		},
+		{
+			"variant": "neutral",
+			"title": "AWS PROFESSIONAL",
+			"description": "Certified Solutions Architect Professional badge for cloud infrastructure architecture.",
+			"icon": "cloud",
+			"wrapperClass": "transition-transform hover:-rotate-1 lg:mt-12"
+		},
+		{
+			"variant": "yellow",
+			"title": "FWA OF THE DAY",
+			"description": "Honored for exceptional creativity and technical execution on the web.",
+			"icon": "star",
+			"wrapperClass": "transition-transform hover:scale-105"
+		},
+		{
+			"variant": "neutral",
+			"title": "BEST UI AWARDS",
+			"description": "CSS Design Awards nomination for best user interface design in 2023.",
+			"icon": "code",
+			"wrapperClass": "transition-transform hover:rotate-1 lg:-mt-6"
+		},
+		{
+			"variant": "yellow",
+			"title": "ETH GLOBAL WINNER",
+			"description": "First place in the DeFi track during the 2022 ETH Global Hackathon.",
+			"icon": "award",
+			"wrapperClass": "transition-transform hover:scale-110"
+		},
+		{
+			"variant": "neutral",
+			"title": "AZURE SOLUTIONS",
+			"description": "Microsoft Certified: Azure Solutions Architect Expert certification.",
+			"icon": "microchip",
+			"wrapperClass": "transition-transform hover:-rotate-2 lg:mt-6"
+		},
+		{
+			"variant": "yellow",
+			"title": "FORBES 30U30",
+			"description": "Recognized in the Tech & Media category for contributions to the ecosystem.",
+			"icon": "book-open",
+			"wrapperClass": "transition-transform hover:scale-105 lg:-mt-12"
+		},
+		{
+			"variant": "neutral",
+			"title": "REACT CONF SPEAKER",
+			"description": "Keynote speaker on the future of brutalist design in web applications.",
+			"icon": "megaphone",
+			"wrapperClass": "transition-transform hover:rotate-2"
+		},
+		{
+			"variant": "yellow",
+			"title": "10K STARS PROJECT",
+			"description": "Lead maintainer of the open-source library used by over 500 companies.",
+			"icon": "git-branch",
+			"wrapperClass": "transition-transform hover:scale-105 lg:mt-12"
+		},
+		{
+			"variant": "neutral",
+			"title": "DRIBBBLE TOP SHOT",
+			"description": "Voted #1 design concept of the month with over 50k interactions.",
+			"icon": "image",
+			"wrapperClass": "transition-transform hover:-rotate-1 lg:-mt-6"
+		},
+		{
+			"variant": "yellow",
+			"title": "SMASHING MAG FEAT",
+			"description": "Authored a feature article on accessible brutalism for modern web.",
+			"icon": "file-text",
+			"wrapperClass": "transition-transform hover:scale-110"
+		},
+		{
+			"variant": "neutral",
+			"title": "GOOGLE CLOUD CD",
+			"description": "Professional Cloud Developer certification for enterprise systems.",
+			"icon": "shield-check",
+			"wrapperClass": "transition-transform hover:rotate-1 lg:mt-6"
+		}
+	],
+	"showcaseDesignAwards": [
+		{
+			"variant": "yellow",
+			"title": "SOTM // AWWWARDS",
+			"description": "Site of the Month recognition for Project Stellar - a revolutionary fintech dashboard.",
+			"icon": "trophy"
+		},
+		{
+			"variant": "neutral",
+			"title": "FWA OF THE DAY",
+			"description": "Honoring visual excellence and creative coding for the \"Lost in Chaos\" portfolio experience.",
+			"icon": "award"
+		},
+		{
+			"variant": "purple",
+			"title": "CSS WINNER SOTD",
+			"description": "Voted best UI design for the \"Brutal Architecture\" archive platform in 2023.",
+			"icon": "star"
+		},
+		{
+			"variant": "yellow",
+			"title": "BEHANCE CURATED",
+			"description": "Featured in the Interaction design gallery for the \"Neon Punk\" mobile app case study.",
+			"icon": "crown"
+		}
+	],
+	"showcaseTechEngineering": [
+		{
+			"variant": "neutral",
+			"title": "HACKATON WINNER",
+			"description": "1st Place at Jakarta Web3 Hackathon for building an autonomous DeFi tracker.",
+			"icon": "terminal"
+		},
+		{
+			"variant": "yellow",
+			"title": "AWS PROFESSIONAL",
+			"description": "Validated expertise in architecting complex distributed systems on AWS clouds.",
+			"icon": "shield-check"
+		},
+		{
+			"variant": "neutral",
+			"title": "META CERTIFIED",
+			"description": "Senior React Specialist certification verifying mastery of component patterns.",
+			"icon": "cpu"
+		},
+		{
+			"variant": "yellow",
+			"title": "TOP BUG BOUNTY",
+			"description": "Discovered critical vulnerability in major SaaS platform, earning Hall of Fame status.",
+			"icon": "bug"
+		}
+	],
+	"showcaseLocalHero": {
+		"rank": "#01",
+		"title": "LOCAL HERO",
+		"description": "VOTED MOST INNOVATIVE DEVELOPER IN THE SOUTHEAST ASIAN TECH COMMUNITY 2024."
+	},
+	"showcaseOpenSource": [
+		{
+			"icon": "git-branch",
+			"title": "1K+ STARS",
+			"description": "CREATOR OF 'BRUTAL-UI' LIBRARY, USED BY THOUSANDS OF EXPERIMENTAL DEVELOPERS.",
+			"cellClass": "border-b-8 border-black p-12 transition-all hover:bg-black hover:text-white md:border-r-8 md:border-b-0"
+		},
+		{
+			"icon": "git-pull-request",
+			"title": "CONTRIBUTOR",
+			"description": "ACTIVE CORE CONTRIBUTOR TO TAILWIND CSS AND VITE ECOSYSTEMS.",
+			"cellClass": "border-b-8 border-black p-12 transition-all hover:bg-white hover:text-black lg:border-r-8 lg:border-b-0"
+		},
+		{
+			"icon": "users",
+			"title": "MENTOR",
+			"description": "MENTORED 50+ JUNIOR DEVS THROUGH GOOGLE SUMMER OF CODE 2022-2023.",
+			"cellClass": "p-12 transition-all hover:bg-zinc-800 hover:text-accent md:col-span-2 lg:col-span-1"
+		}
+	]
+}

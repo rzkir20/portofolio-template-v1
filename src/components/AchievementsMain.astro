@@ -1,0 +1,104 @@
+---
+import AchievementCard from "./AchievementCard.astro";
+import Trophy from "@lucide/astro/icons/trophy";
+import Cloud from "@lucide/astro/icons/cloud";
+import Star from "@lucide/astro/icons/star";
+import Code from "@lucide/astro/icons/code";
+import Award from "@lucide/astro/icons/award";
+import Microchip from "@lucide/astro/icons/microchip";
+import BookOpen from "@lucide/astro/icons/book-open";
+import Megaphone from "@lucide/astro/icons/megaphone";
+import GitBranch from "@lucide/astro/icons/git-branch";
+import Image from "@lucide/astro/icons/image";
+import FileText from "@lucide/astro/icons/file-text";
+import ShieldCheck from "@lucide/astro/icons/shield-check";
+import data from "../assets/data.json";
+
+type AchievementVariant = "yellow" | "blue" | "purple" | "neutral";
+
+type AchievementEntry = {
+	variant: AchievementVariant;
+	title: string;
+	description: string;
+	icon: keyof typeof iconMap;
+	wrapperClass: string;
+};
+
+const iconMap = {
+	trophy: Trophy,
+	cloud: Cloud,
+	star: Star,
+	code: Code,
+	award: Award,
+	microchip: Microchip,
+	"book-open": BookOpen,
+	megaphone: Megaphone,
+	"git-branch": GitBranch,
+	image: Image,
+	"file-text": FileText,
+	"shield-check": ShieldCheck,
+} as const;
+
+const achievements = data.achievements as AchievementEntry[];
+---
+
+<main style="view-transition-name: main-content" class="overflow-hidden pt-32 pb-24">
+	<div class="relative container mx-auto mb-24 px-6">
+		<div
+			class="vertical-text font-display absolute top-0 -left-12 hidden text-4xl uppercase opacity-20 lg:block"
+		>
+			Hall of Fame
+		</div>
+		<h1 class="glitch mb-4 cursor-default font-display text-[8vw] leading-none lg:text-[10vw]">
+			<span class="bg-black px-4 text-white dark:bg-white dark:text-black">ACHIEVEMENTS</span><br />
+			AWARDS & RECOGNITIONS
+		</h1>
+		<div class="mt-12 flex flex-col items-start gap-6 md:flex-row md:items-center">
+			<div class="rotate-2 bg-accent p-4 font-bold text-2xl text-black brutalist-border">
+				2018 - PRESENT
+			</div>
+			<div
+				class="border-4 border-black p-4 text-xl font-bold tracking-tighter uppercase dark:border-white"
+			>
+				A collection of milestones, certifications, and industry wins. No soft participation trophies.
+			</div>
+		</div>
+	</div>
+
+	<section class="container mx-auto px-6">
+		<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+			{
+				achievements.map((item) => {
+					const Icon = iconMap[item.icon];
+					return (
+						<div class={item.wrapperClass}>
+							<AchievementCard variant={item.variant} title={item.title} description={item.description}>
+								<Icon class="stroke-[1.5]" />
+							</AchievementCard>
+						</div>
+					);
+				})
+			}
+		</div>
+	</section>
+
+	<div class="container mx-auto mt-32 px-6">
+		<div
+			class="flex flex-col items-center justify-between gap-12 bg-black p-12 text-white brutalist-border brutalist-shadow md:flex-row dark:bg-accent dark:text-black"
+		>
+			<div class="max-w-xl">
+				<h2 class="mb-4 font-display text-4xl lg:text-6xl">WANT TO BUILD SOMETHING AWARD-WINNING?</h2>
+				<p class="text-xl font-bold tracking-tighter uppercase">
+					I'M CURRENTLY TAKING ON NEW PROJECTS FOR LATE 2024. DON'T SEND A WEAK BRIEF.
+				</p>
+			</div>
+			<a
+				href="/contact"
+				id="cta-achievements-hire"
+				class="bg-white px-12 py-8 font-display text-3xl text-black uppercase transition-all brutalist-border hover:bg-zinc-200 dark:bg-black dark:text-white dark:hover:bg-zinc-800"
+			>
+				Hire the best
+			</a>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,466 @@
+---
+import Code from "@lucide/astro/icons/code";
+import Zap from "@lucide/astro/icons/zap";
+import Cpu from "@lucide/astro/icons/cpu";
+import Terminal from "@lucide/astro/icons/terminal";
+import Award from "@lucide/astro/icons/award";
+---
+
+<main style="view-transition-name: main-content" class="flex-1 pb-24 pt-32">
+	<!-- Header -->
+	<div class="relative container mx-auto mb-20 px-6">
+		<div
+			class="vertical-text pointer-events-none absolute -top-12 -right-12 select-none font-display text-[15vw] opacity-5 dark:opacity-10"
+		>
+			ARCADE
+		</div>
+		<div class="diagonal-text mb-8 inline-block bg-black px-8 py-4 text-white brutalist-border dark:bg-accent dark:text-black">
+			<h1 class="font-display text-4xl md:text-6xl">GAMER // ZONE</h1>
+		</div>
+		<p
+			class="max-w-2xl border-l-8 border-black pl-6 text-2xl font-bold uppercase dark:border-white"
+		>
+			PROVING THAT FRONTEND DEVELOPMENT CAN BE FUN. <br />
+			PLAY THESE RADICAL MINI-GAMES BUILT WITH RAW JS.
+		</p>
+	</div>
+
+	<div class="container mx-auto grid grid-cols-1 gap-16 px-6 xl:grid-cols-2">
+		<!-- Tic-tac-toe -->
+		<div class="flex flex-col gap-8">
+			<div class="bg-white p-8 brutalist-border brutalist-shadow dark:bg-zinc-900">
+				<div
+					class="mb-8 flex items-center justify-between border-b-4 border-black pb-4 dark:border-white"
+				>
+					<h2 class="font-display text-4xl">TIC-TAC-TOE</h2>
+					<div class="bg-accent px-4 py-2 font-bold text-sm text-black brutalist-border">VS AI: ON</div>
+				</div>
+
+				<div class="mb-8 grid grid-cols-3 brutalist-border border-black dark:border-white" id="ttt-board">
+					<button
+						type="button"
+						class="game-grid-cell border-r-4 border-b-4 border-black dark:border-white"
+						data-ttt="0"
+						aria-label="Cell 1"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-r-4 border-b-4 border-black dark:border-white"
+						data-ttt="1"
+						aria-label="Cell 2"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-b-4 border-black dark:border-white"
+						data-ttt="2"
+						aria-label="Cell 3"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-r-4 border-b-4 border-black dark:border-white"
+						data-ttt="3"
+						aria-label="Cell 4"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-r-4 border-b-4 border-black dark:border-white"
+						data-ttt="4"
+						aria-label="Cell 5"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-b-4 border-black dark:border-white"
+						data-ttt="5"
+						aria-label="Cell 6"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-r-4 border-black dark:border-white"
+						data-ttt="6"
+						aria-label="Cell 7"></button>
+					<button
+						type="button"
+						class="game-grid-cell border-r-4 border-black dark:border-white"
+						data-ttt="7"
+						aria-label="Cell 8"></button>
+					<button type="button" class="game-grid-cell border-black dark:border-white" data-ttt="8" aria-label="Cell 9"
+					></button>
+				</div>
+
+				<p class="mb-4 min-h-[1.5em] text-lg font-bold uppercase" id="ttt-status" aria-live="polite"></p>
+				<div class="flex items-center justify-between">
+					<div class="text-xl font-bold uppercase">
+						PLAYER: <span class="text-accent">X</span>
+					</div>
+					<button
+						type="button"
+						id="reset-ttt"
+						class="bg-black px-6 py-3 font-display text-xl text-white transition-all brutalist-border hover:bg-accent hover:text-black dark:bg-white dark:text-black dark:hover:bg-accent dark:hover:text-black"
+					>
+						RESTART
+					</button>
+				</div>
+			</div>
+
+			<div class="-rotate-1 bg-accent p-8 text-black brutalist-border brutalist-shadow-sm">
+				<h3 class="mb-4 font-display text-2xl">RULES OF CHAOS</h3>
+				<ul class="list-none space-y-2 font-bold uppercase">
+					<li>1. GET THREE IN A ROW.</li>
+					<li>2. DON'T LET THE MACHINE WIN.</li>
+					<li>3. THERE IS NO NUMBER 3.</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Memory -->
+		<div class="flex flex-col gap-8">
+			<div class="bg-black p-8 text-white brutalist-border brutalist-shadow">
+				<div class="mb-8 flex items-center justify-between border-b-4 border-white pb-4">
+					<h2 class="font-display text-4xl">MEMORY // MESH</h2>
+					<div class="bg-accent px-4 py-2 font-bold text-sm text-black brutalist-border">
+						MOVES: <span id="memory-moves">0</span>
+					</div>
+				</div>
+
+				<div class="mb-8 grid grid-cols-4 gap-4" id="memory-grid">
+					<div class="memory-card" data-pair="0" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Code class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="1" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Zap class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="2" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Cpu class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="3" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Terminal class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="1" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Zap class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="0" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Code class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="3" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Terminal class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+					<div class="memory-card" data-pair="2" role="button" tabindex="0">
+						<div class="memory-card-inner">
+							<div class="memory-card-front brutalist-border">?</div>
+							<div class="memory-card-back brutalist-border"><Cpu class="size-8 stroke-[1.5]" /></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex items-center justify-between">
+					<div class="text-xl font-bold uppercase">
+						SCORE: <span class="text-accent" id="memory-score">2000</span>
+					</div>
+					<button
+						type="button"
+						id="reset-memory"
+						class="bg-accent px-6 py-3 font-display text-xl text-black transition-all brutalist-border hover:bg-white"
+					>
+						SHUFFLE
+					</button>
+				</div>
+			</div>
+
+			<div
+				class="flex rotate-1 flex-col items-center justify-center bg-white p-8 text-center brutalist-border brutalist-shadow-sm dark:bg-zinc-800"
+			>
+				<Award class="mb-4 size-16 stroke-[1.25] text-accent" aria-hidden="true" />
+				<h3 class="mb-2 font-display text-2xl">HIGH SCORE</h3>
+				<p class="font-display text-4xl" id="memory-high">0</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Marquee -->
+	<div
+		class="mt-32 overflow-hidden border-y-8 border-black bg-black py-6 whitespace-nowrap text-white dark:border-white dark:bg-accent dark:text-black"
+	>
+		<div class="animate-marquee flex gap-12 font-display text-4xl">
+			<span>GAME OVER // PLAY AGAIN // LEVEL UP // NO MERCY // HIGH SCORE // INSERT COIN // </span>
+			<span>GAME OVER // PLAY AGAIN // LEVEL UP // NO MERCY // HIGH SCORE // INSERT COIN // </span>
+		</div>
+	</div>
+</main>
+
+<script is:inline>
+	(function () {
+		/* --- Tic-tac-toe vs AI (minimax) --- */
+		const board = Array(9).fill(null);
+		let gameOver = false;
+		let tttBusy = false;
+
+		function lines() {
+			return [
+				[0, 1, 2],
+				[3, 4, 5],
+				[6, 7, 8],
+				[0, 3, 6],
+				[1, 4, 7],
+				[2, 5, 8],
+				[0, 4, 8],
+				[2, 4, 6],
+			];
+		}
+
+		function winner(b) {
+			for (const [a, c, d] of lines()) {
+				if (b[a] && b[a] === b[c] && b[a] === b[d]) return b[a];
+			}
+			if (b.every(Boolean)) return "draw";
+			return null;
+		}
+
+		function minimax(b, isMax) {
+			const w = winner(b);
+			if (w === "O") return 10;
+			if (w === "X") return -10;
+			if (w === "draw") return 0;
+
+			if (isMax) {
+				let best = -Infinity;
+				for (let i = 0; i < 9; i++) {
+					if (b[i] === null) {
+						b[i] = "O";
+						best = Math.max(best, minimax(b, false));
+						b[i] = null;
+					}
+				}
+				return best;
+			}
+			let best = Infinity;
+			for (let i = 0; i < 9; i++) {
+				if (b[i] === null) {
+					b[i] = "X";
+					best = Math.min(best, minimax(b, true));
+					b[i] = null;
+				}
+			}
+			return best;
+		}
+
+		function bestMove() {
+			let bestScore = -Infinity;
+			let move = -1;
+			for (let i = 0; i < 9; i++) {
+				if (board[i] === null) {
+					board[i] = "O";
+					const score = minimax(board, false);
+					board[i] = null;
+					if (score > bestScore) {
+						bestScore = score;
+						move = i;
+					}
+				}
+			}
+			return move;
+		}
+
+		function renderTTT() {
+			document.querySelectorAll("[data-ttt]").forEach((btn) => {
+				const i = parseInt(btn.getAttribute("data-ttt"), 10);
+				btn.textContent = board[i] || "";
+				btn.classList.toggle("ttt-taken", !!board[i]);
+				btn.disabled = gameOver || !!board[i];
+			});
+		}
+
+		const statusEl = document.getElementById("ttt-status");
+
+		function setStatus(msg) {
+			if (statusEl) statusEl.textContent = msg || "";
+		}
+
+		function endGame() {
+			gameOver = true;
+			document.querySelectorAll("[data-ttt]").forEach((btn) => {
+				btn.disabled = true;
+			});
+		}
+
+		function checkEnd() {
+			const w = winner(board);
+			if (w === "X") {
+				setStatus("YOU WIN // UNLIKELY");
+				endGame();
+				return true;
+			}
+			if (w === "O") {
+				setStatus("AI WINS // THE MACHINE NEVER FORGETS");
+				endGame();
+				return true;
+			}
+			if (w === "draw") {
+				setStatus("DRAW // STALEMATE");
+				endGame();
+				return true;
+			}
+			return false;
+		}
+
+		function handleTttClick(i) {
+			if (tttBusy || gameOver) return;
+			if (board[i] !== null) return;
+
+			tttBusy = true;
+			try {
+				board[i] = "X";
+				renderTTT();
+				if (checkEnd()) return;
+
+				const ai = bestMove();
+				if (ai >= 0 && board[ai] === null) {
+					board[ai] = "O";
+				}
+				renderTTT();
+				checkEnd();
+			} finally {
+				tttBusy = false;
+			}
+		}
+
+		const tttBoard = document.getElementById("ttt-board");
+		if (tttBoard && !tttBoard.dataset.bound) {
+			tttBoard.dataset.bound = "1";
+			tttBoard.addEventListener("click", (e) => {
+				const btn = e.target.closest("[data-ttt]");
+				if (!btn || !tttBoard.contains(btn)) return;
+				e.preventDefault();
+				const i = parseInt(btn.getAttribute("data-ttt"), 10);
+				if (Number.isNaN(i)) return;
+				handleTttClick(i);
+			});
+		}
+
+		const resetTtt = document.getElementById("reset-ttt");
+		if (resetTtt && !resetTtt.dataset.bound) {
+			resetTtt.dataset.bound = "1";
+			resetTtt.addEventListener("click", () => {
+				for (let i = 0; i < 9; i++) board[i] = null;
+				gameOver = false;
+				tttBusy = false;
+				setStatus("");
+				renderTTT();
+				document.querySelectorAll("[data-ttt]").forEach((btn) => {
+					btn.disabled = false;
+				});
+			});
+		}
+
+		renderTTT();
+
+		/* --- Memory grid --- */
+		const memGrid = document.getElementById("memory-grid");
+		const movesEl = document.getElementById("memory-moves");
+		const scoreEl = document.getElementById("memory-score");
+		const highEl = document.getElementById("memory-high");
+
+		let memMoves = 0;
+		let memLocked = false;
+		let picked = [];
+
+		function updateScore() {
+			const s = Math.max(0, 2000 - memMoves * 5);
+			if (scoreEl) scoreEl.textContent = String(s);
+			const high = parseInt(localStorage.getItem("arcade-memory-high") || "0", 10);
+			if (highEl) highEl.textContent = high.toLocaleString("en-US");
+		}
+
+		function maybeHighScore() {
+			const s = Math.max(0, 2000 - memMoves * 5);
+			const prev = parseInt(localStorage.getItem("arcade-memory-high") || "0", 10);
+			if (s > prev) {
+				localStorage.setItem("arcade-memory-high", String(s));
+				if (highEl) highEl.textContent = s.toLocaleString("en-US");
+			}
+		}
+
+		function shuffleMemory() {
+			if (!memGrid) return;
+			const cards = [...memGrid.querySelectorAll(".memory-card")];
+			cards.forEach((c) => {
+				c.classList.remove("flipped", "matched");
+			});
+			for (let i = cards.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				memGrid.appendChild(cards[j]);
+			}
+			memMoves = 0;
+			picked = [];
+			memLocked = false;
+			if (movesEl) movesEl.textContent = "0";
+			updateScore();
+		}
+
+		if (memGrid && !memGrid.dataset.bound) {
+			memGrid.dataset.bound = "1";
+			memGrid.addEventListener("click", (e) => {
+				const card = e.target.closest(".memory-card");
+				if (!card || !memGrid.contains(card)) return;
+				if (memLocked || card.classList.contains("matched")) return;
+				if (card.classList.contains("flipped")) return;
+
+				card.classList.add("flipped");
+				picked.push(card);
+
+				if (picked.length < 2) return;
+
+				memMoves += 1;
+				if (movesEl) movesEl.textContent = String(memMoves);
+				updateScore();
+
+				const [a, b] = picked;
+				const pa = a.getAttribute("data-pair");
+				const pb = b.getAttribute("data-pair");
+
+				if (pa === pb) {
+					a.classList.add("matched");
+					b.classList.add("matched");
+					picked = [];
+					const left = memGrid.querySelectorAll(".memory-card:not(.matched)").length;
+					if (left === 0) {
+						maybeHighScore();
+						memLocked = true;
+					}
+					return;
+				}
+
+				memLocked = true;
+				setTimeout(() => {
+					a.classList.remove("flipped");
+					b.classList.remove("flipped");
+					picked = [];
+					memLocked = false;
+				}, 650);
+			});
+		}
+
+		const resetMem = document.getElementById("reset-memory");
+		if (resetMem && !resetMem.dataset.bound) {
+			resetMem.dataset.bound = "1";
+			resetMem.addEventListener("click", shuffleMemory);
+		}
+
+		shuffleMemory();
+		updateScore();
+	})();
+</script>

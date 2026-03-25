@@ -1,0 +1,26 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer
+	class="border-t-8 border-black bg-white py-12 dark:border-white dark:bg-black"
+>
+	<div
+		class="container mx-auto flex flex-col items-center justify-between gap-12 px-6 md:flex-row"
+	>
+		<div class="font-display text-4xl">
+			ALEX <span class="text-accent">{year}</span>
+		</div>
+
+		<div class="flex flex-wrap justify-center gap-8 font-display text-2xl">
+			<a href="#" id="foot-gh-link" class="underline hover:text-accent">GITHUB</a>
+			<a href="#" id="foot-tw-link" class="underline hover:text-accent">TWITTER</a>
+			<a href="#" id="foot-li-link" class="underline hover:text-accent">LINKEDIN</a>
+		</div>
+
+		<div class="text-center font-bold md:text-right">
+			DESIGNED TO BE BROKEN. <br />
+			ALL RIGHTS RESERVED.
+		</div>
+	</div>
+</footer>

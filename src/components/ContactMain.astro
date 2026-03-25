@@ -1,0 +1,242 @@
+---
+import Mail from "@lucide/astro/icons/mail";
+import MapPin from "@lucide/astro/icons/map-pin";
+import Send from "@lucide/astro/icons/send";
+import LoaderCircle from "@lucide/astro/icons/loader-circle";
+import FileText from "@lucide/astro/icons/file-text";
+import Braces from "@lucide/astro/icons/braces";
+import Component from "@lucide/astro/icons/component";
+import Wind from "@lucide/astro/icons/wind";
+import Server from "@lucide/astro/icons/server";
+import Container from "@lucide/astro/icons/container";
+import PenTool from "@lucide/astro/icons/pen-tool";
+import GitBranch from "@lucide/astro/icons/git-branch";
+import Link2 from "@lucide/astro/icons/link-2";
+import Hash from "@lucide/astro/icons/hash";
+---
+
+<main style="view-transition-name: main-content" class="pt-32 pb-24">
+	<div class="container mx-auto px-6">
+		<header class="mb-20">
+			<h1 class="mb-4 font-display text-[12vw] leading-none lg:text-[10vw]">
+				GET IN <br />
+				<span class="bg-black px-4 text-white dark:bg-white dark:text-black">CONTACT</span>
+			</h1>
+			<div class="-rotate-2 inline-block bg-accent p-4 font-bold text-2xl text-black brutalist-border">
+				& VIEW MY CREDENTIALS
+			</div>
+		</header>
+
+		<div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+			<!-- Contact form + channels -->
+			<div class="space-y-12 lg:col-span-5">
+				<div class="bg-white p-8 brutalist-border brutalist-shadow dark:bg-zinc-900">
+					<h2 class="mb-8 border-b-4 border-black pb-4 font-display text-4xl dark:border-white">
+						MISSION LOG
+					</h2>
+
+					<form id="contact-page-form" class="space-y-6">
+						<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+							<div class="space-y-2">
+								<label class="font-display text-sm font-semibold">FULL NAME</label>
+								<input
+									name="fullname"
+									type="text"
+									placeholder="JOHN DOE"
+									required
+									class="w-full border-4 border-black bg-transparent px-5 py-4 transition-all outline-none focus:bg-accent focus:text-black dark:border-white"
+								/>
+							</div>
+							<div class="space-y-2">
+								<label class="font-display text-sm font-semibold">EMAIL ADDRESS</label>
+								<input
+									name="email"
+									type="email"
+									placeholder="JOHN@EXAMPLE.COM"
+									required
+									class="w-full border-4 border-black bg-transparent px-5 py-4 transition-all outline-none focus:bg-accent focus:text-black dark:border-white"
+								/>
+							</div>
+						</div>
+						<div class="space-y-2">
+							<label class="font-display text-sm font-semibold">MESSAGE</label>
+							<textarea
+								name="message"
+								rows="5"
+								placeholder="WHAT'S ON YOUR MIND?"
+								required
+								class="w-full resize-none border-4 border-black bg-transparent px-5 py-4 transition-all outline-none focus:bg-accent focus:text-black dark:border-white"
+							></textarea>
+						</div>
+						<button
+							type="submit"
+							id="btn-contact-page-submit"
+							class="flex w-full items-center justify-center gap-2 bg-black py-4 font-bold text-white transition-all brutalist-border hover:bg-accent hover:text-black disabled:cursor-not-allowed disabled:opacity-70 dark:bg-white dark:text-black dark:hover:bg-accent dark:hover:text-black"
+						>
+							<span id="btn-contact-page-label">SEND MESSAGE</span>
+							<Send id="btn-contact-page-icon-send" class="size-5 stroke-2" aria-hidden="true" />
+							<LoaderCircle
+								id="btn-contact-page-icon-loader"
+								class="hidden size-5 animate-spin stroke-2"
+								aria-hidden="true"
+							/>
+						</button>
+					</form>
+				</div>
+
+				<div class="rotate-1 bg-black p-8 text-white brutalist-border brutalist-shadow">
+					<h3 class="mb-6 font-display text-3xl text-accent">DIRECT CHANNELS</h3>
+					<div class="space-y-4 font-bold">
+						<p class="flex items-center gap-4 text-xl">
+							<Mail class="size-8 shrink-0 stroke-[1.5]" aria-hidden="true" />
+							HELLO@ALEX.CHAOS
+						</p>
+						<p class="flex items-center gap-4 text-xl">
+							<MapPin class="size-8 shrink-0 stroke-[1.5]" aria-hidden="true" />
+							BERLIN // GLOBAL
+						</p>
+						<div class="flex gap-6 pt-4 text-3xl">
+							<a href="#" id="soc-gh-1" class="hover:text-accent" aria-label="GitHub">
+								<GitBranch class="size-10 stroke-[1.5]" />
+							</a>
+							<a href="#" id="soc-li-1" class="hover:text-accent" aria-label="LinkedIn">
+								<Link2 class="size-10 stroke-[1.5]" />
+							</a>
+							<a href="#" id="soc-tw-1" class="hover:text-accent" aria-label="Twitter">
+								<Hash class="size-10 stroke-[1.5]" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- CV column -->
+			<div id="cv" class="space-y-12 lg:col-span-7">
+				<div class="bg-zinc-100 p-8 brutalist-border brutalist-shadow dark:bg-zinc-800">
+					<h2 class="mb-8 flex items-center justify-between font-display text-4xl">
+						CURRICULUM
+						<FileText class="size-10 stroke-[1.5] text-accent" aria-hidden="true" />
+					</h2>
+
+					<div class="space-y-8">
+						<div class="border-l-8 border-black pl-6 dark:border-white">
+							<p class="mb-2 inline-block bg-black px-2 font-bold text-accent">2022 - PRESENT</p>
+							<h3 class="font-display text-2xl">SENIOR FRONTEND DEV</h3>
+							<p class="font-bold opacity-70">TECHNOVA SOLUTIONS // REMOTE</p>
+						</div>
+						<div class="border-l-8 border-accent pl-6">
+							<p class="mb-2 inline-block bg-accent px-2 font-bold text-black">2020 - 2022</p>
+							<h3 class="font-display text-2xl">UI DESIGNER</h3>
+							<p class="font-bold opacity-70">CREATIVE STUDIO // JKT</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-2 gap-6 md:grid-cols-3">
+					<div
+						class="group flex aspect-square flex-col items-center justify-center bg-black p-6 text-center text-white transition-colors brutalist-border brutalist-shadow-sm hover:bg-accent hover:text-black"
+					>
+						<Braces class="mb-2 size-14 stroke-[1.25]" aria-hidden="true" />
+						<span class="font-display text-sm">TYPESCRIPT</span>
+					</div>
+					<div
+						class="group flex aspect-square flex-col items-center justify-center bg-white p-6 text-center transition-colors brutalist-border brutalist-shadow-sm hover:bg-black hover:text-white dark:bg-zinc-900 dark:hover:bg-black"
+					>
+						<Component class="mb-2 size-14 stroke-[1.25]" aria-hidden="true" />
+						<span class="font-display text-sm">REACT.JS</span>
+					</div>
+					<div
+						class="group flex aspect-square flex-col items-center justify-center bg-accent p-6 text-center text-black transition-colors brutalist-border brutalist-shadow-sm hover:bg-black hover:text-white"
+					>
+						<Wind class="mb-2 size-14 stroke-[1.25]" aria-hidden="true" />
+						<span class="font-display text-sm">TAILWIND</span>
+					</div>
+					<div
+						class="group flex aspect-square flex-col items-center justify-center bg-zinc-200 p-6 text-center transition-colors brutalist-border brutalist-shadow-sm hover:bg-accent hover:text-black dark:bg-zinc-700"
+					>
+						<Server class="mb-2 size-14 stroke-[1.25]" aria-hidden="true" />
+						<span class="font-display text-sm">NODE.JS</span>
+					</div>
+					<div
+						class="group flex aspect-square flex-col items-center justify-center bg-black p-6 text-center text-white transition-colors brutalist-border brutalist-shadow-sm hover:bg-white hover:text-black"
+					>
+						<Container class="mb-2 size-14 stroke-[1.25]" aria-hidden="true" />
+						<span class="font-display text-sm">DOCKER</span>
+					</div>
+					<div
+						class="group flex aspect-square flex-col items-center justify-center bg-white p-6 text-center transition-colors brutalist-border brutalist-shadow-sm hover:bg-accent hover:text-black dark:bg-zinc-900"
+					>
+						<PenTool class="mb-2 size-14 stroke-[1.25]" aria-hidden="true" />
+						<span class="font-display text-sm">FIGMA</span>
+					</div>
+				</div>
+
+				<div class="pt-8">
+					<a
+						href="#"
+						id="btn-full-cv-download"
+						class="glitch block w-full bg-accent py-10 text-center font-display text-5xl text-black transition-all brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none"
+					>
+						DOWNLOAD FULL CV PDF
+					</a>
+					<p
+						class="mt-6 text-center font-bold tracking-widest text-zinc-500 uppercase dark:text-zinc-400"
+					>
+						READY FOR PRINT // HIGH RESOLUTION // 1.2MB
+					</p>
+				</div>
+
+				<div class="relative -rotate-1 bg-black px-8 py-12 text-white brutalist-border brutalist-shadow">
+					<h3 class="mb-6 font-display text-3xl">EDUCATION</h3>
+					<ul class="space-y-6">
+						<li class="flex gap-4">
+							<span class="h-fit bg-accent px-2 font-bold text-black">2016</span>
+							<div>
+								<p class="font-display text-xl">COMPUTER SCIENCE BS</p>
+								<p class="opacity-70">UNIVERSITY OF TECHNOLOGY</p>
+							</div>
+						</li>
+						<li class="flex gap-4">
+							<span class="h-fit bg-accent px-2 font-bold text-black">2021</span>
+							<div>
+								<p class="font-display text-xl">SYSTEM DESIGN MASTERY</p>
+								<p class="opacity-70">MIT OPEN COURSEWARE</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script is:inline>
+	const form = document.getElementById("contact-page-form");
+	const btn = document.getElementById("btn-contact-page-submit");
+	const label = document.getElementById("btn-contact-page-label");
+	const iconSend = document.getElementById("btn-contact-page-icon-send");
+	const iconLoader = document.getElementById("btn-contact-page-icon-loader");
+
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+		if (!btn || !label || !iconSend || !iconLoader) return;
+
+		const original = label.textContent;
+		btn.disabled = true;
+		label.textContent = "SENDING...";
+		iconSend.classList.add("hidden");
+		iconLoader.classList.remove("hidden");
+
+		setTimeout(() => {
+			label.textContent = "MESSAGE SENT //";
+			iconLoader.classList.add("hidden");
+			iconSend.classList.remove("hidden");
+			form.reset();
+
+			setTimeout(() => {
+				label.textContent = original || "SEND MESSAGE";
+				btn.disabled = false;
+			}, 2500);
+		}, 1200);
+	});
+</script>

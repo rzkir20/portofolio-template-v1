@@ -1,0 +1,192 @@
+---
+import AchievementCard from "./AchievementCard.astro";
+import Palette from "@lucide/astro/icons/palette";
+import Trophy from "@lucide/astro/icons/trophy";
+import Award from "@lucide/astro/icons/award";
+import Star from "@lucide/astro/icons/star";
+import Crown from "@lucide/astro/icons/crown";
+import Terminal from "@lucide/astro/icons/terminal";
+import ShieldCheck from "@lucide/astro/icons/shield-check";
+import Cpu from "@lucide/astro/icons/cpu";
+import Bug from "@lucide/astro/icons/bug";
+import GitBranch from "@lucide/astro/icons/git-branch";
+import GitPullRequest from "@lucide/astro/icons/git-pull-request";
+import Users from "@lucide/astro/icons/users";
+import data from "../assets/data.json";
+
+type AchievementVariant = "yellow" | "blue" | "purple" | "neutral";
+
+type ShowcaseCardEntry = {
+	variant: AchievementVariant;
+	title: string;
+	description: string;
+	icon: keyof typeof showcaseCardIcons;
+};
+
+type OpenSourceEntry = {
+	icon: keyof typeof openSourceIcons;
+	title: string;
+	description: string;
+	cellClass: string;
+};
+
+const showcaseCardIcons = {
+	trophy: Trophy,
+	award: Award,
+	star: Star,
+	crown: Crown,
+	terminal: Terminal,
+	"shield-check": ShieldCheck,
+	cpu: Cpu,
+	bug: Bug,
+} as const;
+
+const openSourceIcons = {
+	"git-branch": GitBranch,
+	"git-pull-request": GitPullRequest,
+	users: Users,
+} as const;
+
+const showcaseDesignAwards = data.showcaseDesignAwards as ShowcaseCardEntry[];
+const showcaseTechEngineering = data.showcaseTechEngineering as ShowcaseCardEntry[];
+const showcaseLocalHero = data.showcaseLocalHero;
+const showcaseOpenSource = data.showcaseOpenSource as OpenSourceEntry[];
+---
+
+<main style="view-transition-name: main-content" class="overflow-hidden pt-28 pb-0 md:pt-32">
+	<!-- Hero -->
+	<section class="overflow-hidden border-b-8 border-black py-16 md:py-24 dark:border-white">
+		<div class="relative container mx-auto px-6">
+			<div
+				class="pointer-events-none absolute -top-10 -right-20 rotate-6 select-none font-display text-[25vw] opacity-5"
+			>
+				WINS
+			</div>
+			<div class="relative z-10">
+				<div
+					class="mb-8 inline-block bg-black px-6 py-2 font-bold text-2xl text-white brutalist-border dark:bg-accent dark:text-black"
+				>
+					PROOFS OF COMPETENCE
+				</div>
+				<h1 class="mb-8 font-display text-[10vw] leading-none">
+					HALL <br />
+					<span class="diagonal-text inline-block bg-black px-8 text-accent dark:bg-black dark:text-accent"
+						>OF FAME.</span
+					>
+				</h1>
+				<p
+					class="max-w-2xl border-l-8 border-black pl-6 text-2xl font-bold dark:border-white"
+				>
+					A CURATED LIST OF RECOGNITIONS, CERTIFICATIONS, AND VICTORIES EARNED THROUGH BLOOD, SWEAT, AND TOO
+					MUCH CAFFEINE.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Design Recognition -->
+	<section id="design-awards" class="bg-zinc-100 py-24 dark:bg-zinc-900">
+		<div class="container mx-auto px-6">
+			<div class="mb-16 flex flex-col items-start gap-12 lg:flex-row">
+				<div
+					class="vertical-text font-display hidden select-none text-8xl text-black/10 lg:block lg:text-9xl dark:text-white/10"
+				>
+					DESIGN
+				</div>
+				<div class="flex-1">
+					<h2 class="mb-12 flex flex-wrap items-center gap-4 font-display text-6xl lg:text-8xl">
+						<Palette class="size-12 shrink-0 stroke-[1.5] text-accent lg:size-16" aria-hidden="true" />
+						DESIGN AWARDS
+					</h2>
+					<div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+						{
+							showcaseDesignAwards.map((item) => {
+								const Icon = showcaseCardIcons[item.icon];
+								return (
+									<AchievementCard variant={item.variant} title={item.title} description={item.description}>
+										<Icon class="stroke-[1.5]" />
+									</AchievementCard>
+								);
+							})
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tech & Engineering -->
+	<section id="dev-achievements" class="border-y-8 border-black py-24 dark:border-white">
+		<div class="container mx-auto px-6">
+			<h2 class="diagonal-text mb-16 text-center font-display text-6xl lg:text-left lg:text-8xl">
+				TECH & ENGINEERING
+			</h2>
+			<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:col-span-2">
+					{
+						showcaseTechEngineering.map((item) => {
+							const Icon = showcaseCardIcons[item.icon];
+							return (
+								<AchievementCard variant={item.variant} title={item.title} description={item.description}>
+									<Icon class="stroke-[1.5]" />
+								</AchievementCard>
+							);
+						})
+					}
+				</div>
+				<div
+					class="flex rotate-3 flex-col items-center justify-center bg-black p-12 text-center text-white brutalist-border brutalist-shadow"
+				>
+					<div class="mb-4 font-display text-9xl text-accent">{showcaseLocalHero.rank}</div>
+					<h3 class="mb-4 font-display text-4xl">{showcaseLocalHero.title}</h3>
+					<p class="text-xl">{showcaseLocalHero.description}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Open Source -->
+	<section id="open-source" class="bg-accent py-24 text-black">
+		<div class="container mx-auto px-6">
+			<div class="mb-16 flex flex-col items-center justify-between gap-8 md:flex-row">
+				<h2 class="border-b-8 border-black pb-4 font-display text-6xl lg:text-8xl">OPEN SOURCE</h2>
+				<div class="bg-black px-8 py-4 font-display text-2xl text-white brutalist-border">TOP 5% GLOBALLY</div>
+			</div>
+			<div class="grid grid-cols-1 gap-0 border-8 border-black md:grid-cols-2 lg:grid-cols-3">
+				{
+					showcaseOpenSource.map((item) => {
+						const Icon = openSourceIcons[item.icon];
+						return (
+							<div class={item.cellClass}>
+								<Icon class="mb-6 size-16 stroke-[1.25]" aria-hidden="true" />
+								<h3 class="mb-4 font-display text-4xl">{item.title}</h3>
+								<p class="text-lg font-bold">{item.description}</p>
+							</div>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Marquee + CTA -->
+	<section class="relative overflow-hidden bg-black py-32 text-white">
+		<div class="rotate-2 overflow-hidden border-y-8 border-accent py-12">
+			<div
+				class="animate-marquee-showcase flex w-max gap-12 font-display text-7xl whitespace-nowrap lg:text-9xl"
+			>
+				<span>WANT TO BUILD SOMETHING LEGENDARY? // LET'S BREAK THE RULES TOGETHER // </span>
+				<span>WANT TO BUILD SOMETHING LEGENDARY? // LET'S BREAK THE RULES TOGETHER // </span>
+			</div>
+		</div>
+		<div class="container mx-auto mt-20 px-6 text-center">
+			<a
+				href="/contact"
+				id="cta-achievements-contact"
+				class="glitch inline-block bg-accent px-16 py-10 font-display text-4xl text-black transition-all brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none"
+			>
+				HIRE THE CHAMPION
+			</a>
+		</div>
+	</section>
+</main>

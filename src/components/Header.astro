@@ -1,0 +1,48 @@
+---
+import Zap from "@lucide/astro/icons/zap";
+---
+
+<nav
+  class="pointer-events-none fixed top-0 left-0 z-50 flex w-full items-start justify-between p-6"
+>
+  <a
+    href="/"
+    id="nav-logo-link"
+    class="pointer-events-auto bg-black p-4 text-white brutalist-border brutalist-shadow-sm dark:bg-accent dark:text-black"
+  >
+    <span class="font-display text-4xl">ALX.</span>
+  </a>
+
+  <div class="pointer-events-auto flex flex-col gap-2">
+    <button
+      type="button"
+      id="theme-toggle"
+      aria-label="Toggle theme"
+      class="bg-white p-4 text-black transition-all brutalist-border brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none dark:bg-black dark:text-white"
+    >
+      <Zap class="size-8 stroke-2" aria-hidden="true" />
+    </button>
+    <div
+      class="flex flex-col gap-4 bg-black p-4 text-sm font-bold text-white brutalist-border brutalist-shadow-sm dark:bg-white dark:text-black"
+    >
+      <a href="/career-timeline" id="nav-exp-link" class="hover:text-accent">EXP.</a
+      >
+      <a href="/achievements" id="nav-awd-link" class="hover:text-accent"
+        >AWD.</a
+      >
+      <a href="/guestbook" id="nav-guestbook-link" class="hover:text-accent"
+        >GBK.</a
+      >
+      <a href="/games" id="nav-arc-link" class="hover:text-accent">ARC.</a>
+      <a href="/contact" id="nav-cnt-link" class="hover:text-accent">CNT.</a>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+</script>
